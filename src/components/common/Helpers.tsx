@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import Sheet, { SheetProps } from '@mui/joy/Sheet'
 import { Box, BoxProps, SxProps } from '@mui/material'
 import { OptionsObject, SnackbarKey, SnackbarMessage, VariantType } from "notistack"
@@ -27,36 +28,56 @@ export const showMessage = (
 //Flex
 
 interface IFlexProps extends SheetProps {
-    children: JSX.Element | JSX.Element[]
+    box?: boolean
+    children: JSX.Element | JSX.Element[] | ReactNode
     column?: boolean
     fullWidth?: boolean
     centerX?: boolean
     centerY?: boolean
     sx?: SxProps
-
 }
 
 export const Flex = ({ children, column, fullWidth, centerX, centerY, sx, ...props }: IFlexProps) => {
 
-    return <Sheet sx={{
-        display: 'flex',
-        flexDirection: column ? 'column' : undefined,
-        width: fullWidth ? 1 : undefined,
-        ...(!column
-            ? {
-                justifyContent: centerX ? 'center' : undefined,
-                alignItems: centerY ? 'center' : undefined,
-            }
-            : {
-                justifyContent: centerY ? 'center' : undefined,
-                alignItems: centerX ? 'center' : undefined,
-            }),
-        ...sx
-    }}
-        {...props}
-    >
-        {children}
-    </Sheet >
+    return props.box
+        ? <Box sx={{
+            display: 'flex',
+            flexDirection: column ? 'column' : undefined,
+            width: fullWidth ? 1 : undefined,
+            ...(!column
+                ? {
+                    justifyContent: centerX ? 'center' : undefined,
+                    alignItems: centerY ? 'center' : undefined,
+                }
+                : {
+                    justifyContent: centerY ? 'center' : undefined,
+                    alignItems: centerX ? 'center' : undefined,
+                }),
+            ...sx
+        }}
+            {...props}
+        >
+            {children}
+        </Box >
+        : <Sheet sx={{
+            display: 'flex',
+            flexDirection: column ? 'column' : undefined,
+            width: fullWidth ? 1 : undefined,
+            ...(!column
+                ? {
+                    justifyContent: centerX ? 'center' : undefined,
+                    alignItems: centerY ? 'center' : undefined,
+                }
+                : {
+                    justifyContent: centerY ? 'center' : undefined,
+                    alignItems: centerX ? 'center' : undefined,
+                }),
+            ...sx
+        }}
+            {...props}
+        >
+            {children}
+        </Sheet >
 }
 
 // /Flex

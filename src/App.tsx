@@ -3,7 +3,7 @@ import Tab, { tabClasses } from "@mui/joy/Tab";
 import TabList from "@mui/joy/TabList";
 import TabPanel from "@mui/joy/TabPanel";
 import { useSnackbar } from "notistack";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { connect } from 'react-redux';
 import About from "./components/About/About";
 import Activities from "./components/Activities/Activities";
@@ -19,9 +19,10 @@ const App: FC<IProps> = (props) => {
 
   const { enqueueSnackbar } = useSnackbar()
 
+  const [tabId, setTabId] = useState(1)
 
   return <Flex centerX variant="soft" sx={{ height: "100%" }}   >
-    <Tabs defaultValue={0} sx={{ width: .5, mt: 5 }} variant="soft" >
+    <Tabs value={tabId} sx={{ width: .5, mt: 5 }} variant="soft">
       <TabList
         variant="plain"
         sx={{
@@ -44,12 +45,12 @@ const App: FC<IProps> = (props) => {
           },
         }}
       >
-        <Tab variant="soft" >Projects</Tab>
-        <Tab variant="soft" >Activities</Tab>
-        <Tab variant="soft" >About</Tab>
+        <Tab variant="soft" onClick={() => setTabId(0)}>Projects</Tab>
+        <Tab variant="soft" onClick={() => setTabId(1)}>Activities</Tab>
+        <Tab variant="soft" onClick={() => setTabId(2)}>About</Tab>
       </TabList>
       <TabPanel value={0}><Projects /></TabPanel>
-      <TabPanel value={1}><Activities /></TabPanel>
+      <TabPanel value={1}><Activities setTabId={setTabId} /></TabPanel>
       <TabPanel value={2}><About /></TabPanel>
     </Tabs>
   </Flex>
