@@ -19,7 +19,7 @@ const App: FC<IProps> = (props) => {
 
   const { enqueueSnackbar } = useSnackbar()
 
-  const [tabId, setTabId] = useState(2)
+  const [tabId, setTabId] = useState(0)
 
   return <Flex centerX variant="soft" sx={{ height: "100%" }}   >
     <Tabs value={tabId} sx={{ width: .5, mt: 5 }} variant="soft">

@@ -36,7 +36,7 @@ const Activities: FC<IProps> = props => {
             description: <>
                 <Typography>&emsp;The <Link onClick={() => window.open('https://tumo.org/whatistumo/', '_blank')}>TUMO</Link> Center for Creative Technologies is a free education program for teenagers aged 12–18 specializing in technology and design, TUMO is located in Armenia.
                     <br />
-                    &emsp;I start to learn in TUMO when I was 12 years old. Here are my main complated courses in TUMO :
+                    &emsp;I start to learn in TUMO when I was 12 years old. Here are my main completed courses in TUMO :
                 </Typography>
                 <ul>
                     <li>Basics of programming</li>

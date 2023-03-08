@@ -24,13 +24,15 @@ interface IProps {
 
 }
 
-type ToolType = {
-    name: string
+export type ToolType = {
+    name: ToolNameType
     src?: string
     isMain: boolean
 }
 
-const tools: ToolType[] = [
+export type ToolNameType = 'Javascript' | 'ThreeJS' | 'React' | 'Typescript' | 'MUI' | 'MongoDB' | 'NodeJS' | 'ExpressJS' | 'php' | 'MySQL' | 'C#' | 'Unity3D' | 'Telegram Bots' | 'Docker' | 'WebSockets' | 'VueJS'
+
+export const tools: ToolType[] = [
     { name: 'Javascript', isMain: true, src: JSSrc },
     { name: 'ThreeJS', isMain: true, src: ThreeJSSrc },
     { name: 'React', isMain: true, src: ReactSrc },
