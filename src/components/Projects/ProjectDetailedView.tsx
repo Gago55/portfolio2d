@@ -1,11 +1,11 @@
-import { AspectRatio, Avatar, Box, Card, CardOverflow, Chip, Divider, Modal, ModalClose, ModalDialog, Sheet, Typography } from '@mui/joy'
+import { AspectRatio, Avatar, Box, Button, Card, CardOverflow, Chip, Divider, Modal, ModalClose, ModalDialog, Sheet, Typography } from '@mui/joy'
 import React, { FC } from 'react'
 import { tools } from '../About/About'
 import Carousel from '../common/Carousel'
 import { Flex, Shift } from '../common/Helpers'
 import OutlinedDiv from '../common/OutlinedDiv'
 import { ProjectType } from './Projects'
-
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 interface IProps {
     project: ProjectType
@@ -59,13 +59,22 @@ const ProjectDetailedView: FC<IProps> = ({ project, ...props }) => {
                     <Flex column centerX box sx={{ color: 'white', width: 600 }}>
                         {project.description}
                         <Shift />
+                        <Box mt={2}></Box>
                         <Carousel
                             width={'80%'}
                             images={project.images}
                         />
                     </Flex>
                 </Flex>
+                {project.url && <>
+                    <Divider sx={{ my: 2 }} />
 
+                    <Flex sx={{}}>
+                        <Shift />
+                        <Button color='neutral' variant='soft' endDecorator={<OpenInNewIcon />}
+                            onClick={() => window.open(project.url, '_blank')}>Open</Button>
+                    </Flex>
+                </>}
                 {/* <Typography id="layout-modal-description" textColor="text.tertiary">
                     This is a <code>{true}</code> modal dialog. Press <code>esc</code> to
                     close it.

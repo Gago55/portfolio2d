@@ -1,16 +1,9 @@
 import React, { FC, useState, useEffect, ReactNode } from 'react'
-import { AspectRatio, Box, Card, CardOverflow, Divider, Sheet, Typography } from "@mui/joy";
+import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography } from "@mui/joy";
 import { Flex, Shift } from '../common/Helpers';
-import CCPreview from "../../assets/projects/cc/preview.png";
-import CCPic1 from "../../assets/projects/cc/pic1.png";
-import CCPic2 from "../../assets/projects/cc/pic2.png";
-import CCPic3 from "../../assets/projects/cc/pic3.png";
-import CCPic4 from "../../assets/projects/cc/pic4.png";
-import ShadowImg from "../../assets/projects/shadow.png";
-import OutlinedDiv from '../common/OutlinedDiv';
 import ProjectDetailedView from './ProjectDetailedView';
 import { ToolNameType, ToolType } from '../About/About';
-
+import { CCImages, ShadowImages } from '../../assets/projects/projectImages';
 
 export type ProjectType = {
     title: string
@@ -20,26 +13,39 @@ export type ProjectType = {
     isPet: boolean
     tools: ToolNameType[]
     description: ReactNode
+    url: string
 }
 
 const projects: ProjectType[] = [
     {
         title: 'Cabinet Configurator',
         date: "2021", isPet: true,
-        preview: CCPreview,
-        images: [CCPic1,
-            CCPic2,
-            CCPic3, CCPic4,
-            CCPic2,
-        ],
+        preview: CCImages.preview,
+        images: CCImages.images,
         tools: ['Javascript', 'Typescript', 'React', 'ThreeJS', 'MUI', 'php', 'MySQL'],
-        description: <>Gag</>
+        url: 'https://www.garagecabinets.com/g/cc1/',
+        description: <Typography>
+            &emsp;Cabinet Configurator is the main project I'm working on in  <Link onClick={() => {
+
+            }}>Greenberg Casework Company</Link>. I've built it from scratch by myself.<br />
+            &emsp;Cabinet Configurator is web 3D tool to design custom cabinets. The tool is mostly for our company's designers. They design new cabinets and after it the new designs go to our  <Link onClick={() => window.open('https://www.garagecabinets.com', '_blank')}>online shop</Link> for sales.<br />
+            &emsp;Unauthorized users can only play with configurator by building cabinets, but nothing more. Authorized users can save their cabinets, share them with another users. Depends user role, some users can see price generation per piece, see cabinet parts list, change cabinet part configurations (prices, price generation type, etc), see/change cabinet material list, see/change app configs (some properties for cabinet which users can't change in process of designing), see/change app users, etc.<br />
+            &emsp;Here is credentials for demo account, you can login with it to unlock part of functionality of application, the prices for that account are fake. <br /><br /><i> &emsp;Login: demo@demo.com <br /> &emsp;Password: demo1234</i>
+        </Typography >
     },
     {
-        title: 'Shadow Decor', preview: ShadowImg, date: "2021", isPet: false,
-        images: [],
-        tools: ['Javascript'],
-        description: <></>
+        title: 'Shadow Decor', preview: ShadowImages.preview, date: "2019-2020", isPet: false,
+        images: ShadowImages.images,
+        tools: ['Javascript', 'React', 'ThreeJS', 'MUI', 'ExpressJS', 'MongoDB'],
+        url: 'https://shadowdecor.com/editor/',
+        description: <Typography>
+            &emsp;Shadow Decor is a project created by me and  <Link onClick={() => window.open('https://es.linkedin.com/in/manvel-arzumanyan-18623b5a', '_blank')}>my partner</Link>. We worked on it for a year and a half. Development of app fully done by myself.<br />
+            &emsp;Shadow Decor is web 3D tool to create custom shadow for your place. Shadow can be anything: text (your name, some quote, etc) or image (your company logo, your favorite football team logo, your favorite comics hero silhouette or anything else, only your imagination is the limit). You need to place shadow where you want it to be on the wall and input coordinate of light source in the room, after it app will generate <i>custom shape</i> to get shadow you want in real life. You can download your <i>custom shape</i> in several formats<br />
+            &emsp; PDF - for printing it and cutting shape with scissor<br />
+            &emsp; SVG - for laser cut <br />
+            &emsp; STL - for 3d print <br /> <br />
+            &emsp; Also you will get instruction where to put your created shape to get the shadow you want. Shapes generated from text are completely free. Shapes generated from images only for premium users.
+        </Typography>
     }
 ]
 
@@ -47,7 +53,7 @@ interface IProps {
 }
 
 const Projects: FC<IProps> = props => {
-    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[0])
+    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[1])
 
     useEffect(() => {
         const projectBoxes = document.getElementsByClassName('project')
