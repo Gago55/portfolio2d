@@ -69,8 +69,10 @@ const ProjectDetailedView: FC<IProps> = ({ project, ...props }) => {
                 {project.url && <>
                     <Divider sx={{ my: 2 }} />
 
-                    <Flex sx={{}}>
+                    <Flex sx={{ gap: 1 }}>
                         <Shift />
+                        {project.extraUrls.map(u => <Button color='neutral' variant='soft' endDecorator={<OpenInNewIcon />}
+                            onClick={() => window.open(u.url, '_blank')}>{u.title}</Button>)}
                         <Button color='neutral' variant='soft' endDecorator={<OpenInNewIcon />}
                             onClick={() => window.open(project.url, '_blank')}>Open</Button>
                     </Flex>

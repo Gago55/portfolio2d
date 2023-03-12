@@ -3,7 +3,7 @@ import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography 
 import { Flex, Shift } from '../common/Helpers';
 import ProjectDetailedView from './ProjectDetailedView';
 import { ToolNameType, ToolType } from '../About/About';
-import { CCImages, ShadowImages } from '../../assets/projects/projectImages';
+import { CCImages, SecretImages, ShadowImages } from '../../assets/projects/projectImages';
 
 export type ProjectType = {
     title: string
@@ -13,17 +13,18 @@ export type ProjectType = {
     isPet: boolean
     tools: ToolNameType[]
     description: ReactNode
-    url: string
+    url: string,
+    extraUrls: { title: string, url: string }[]
 }
 
 const projects: ProjectType[] = [
     {
         title: 'Cabinet Configurator',
-        date: "2021", isPet: true,
+        date: "2021 - present", isPet: true,
         preview: CCImages.preview,
         images: CCImages.images,
         tools: ['Javascript', 'Typescript', 'React', 'ThreeJS', 'MUI', 'php', 'MySQL'],
-        url: 'https://www.garagecabinets.com/g/cc1/',
+        url: 'https://www.garagecabinets.com/g/cc1/', extraUrls: [],
         description: <Typography>
             &emsp;Cabinet Configurator is the main project I'm working on in  <Link onClick={() => {
 
@@ -37,7 +38,7 @@ const projects: ProjectType[] = [
         title: 'Shadow Decor', preview: ShadowImages.preview, date: "2019-2020", isPet: false,
         images: ShadowImages.images,
         tools: ['Javascript', 'React', 'ThreeJS', 'MUI', 'ExpressJS', 'MongoDB'],
-        url: 'https://shadowdecor.com/editor/',
+        url: 'https://shadowdecor.com/editor/', extraUrls: [],
         description: <Typography>
             &emsp;Shadow Decor is a project created by me and  <Link onClick={() => window.open('https://es.linkedin.com/in/manvel-arzumanyan-18623b5a', '_blank')}>my partner</Link>. We worked on it for a year and a half. Development of app fully done by myself.<br />
             &emsp;Shadow Decor is web 3D tool to create custom shadow for your place. Shadow can be anything: text (your name, some quote, etc) or image (your company logo, your favorite football team logo, your favorite comics hero silhouette or anything else, only your imagination is the limit). You need to place shadow where you want it to be on the wall and input coordinate of light source in the room, after it app will generate <i>custom shape</i> to get shadow you want in real life. You can download your <i>custom shape</i> in several formats<br />
@@ -46,6 +47,19 @@ const projects: ProjectType[] = [
             &emsp; STL - for 3d print <br /> <br />
             &emsp; Also you will get instruction where to put your created shape to get the shadow you want. Shapes generated from text are completely free. Shapes generated from images only for premium users.
         </Typography>
+    },
+    {
+        title: 'Secret Contract Verifier', preview: SecretImages.preview, date: "2021", isPet: false,
+        images: SecretImages.images,
+        tools: ['Javascript', 'Typescript', 'React', 'MUI', 'ExpressJS', 'MongoDB', 'Docker'],
+        url: 'http://secret-contracts.com',
+        extraUrls: [{ title: 'Source', url: 'https://github.com/Gago55/Secret-Contract-Verifier' }],
+        description: <Typography>
+            &emsp;Secret Network is an open-source protocol that performs computations on encrypted data, bringing privacy to smart contracts and public blockchains.
+            <br />
+            &emsp;Secret Contract Verifier is a open-source app that let smart contract developers provide their contract's source code to prove that it is the contract that is deployed in the blockchain.   <br />
+            &emsp;The app has two components: docker image and web app. <Link onClick={() => window.open('https://hub.docker.com/r/gago55/secret-contract-verifier', '_blank')}>The docker image</Link> compiles contract source code to binary code, calculate hash of result file and compare it with given hash from user. In web app users can see all smart contracts deployed in blockchain, see verified contract's source code, and developers can attempt to verify their contracts. More about this project you can learn by reading <Link onClick={() => window.open('https://es.linkedin.com/in/manvel-arzumanyan-18623b5a', '_blank')}>my partner's</Link> and my <Link onClick={() => window.open('https://github.com/scrtlabs/Grants/issues/7', '_blank')}>proposal</Link> for Secret Network written before project has been done. Development of app fully done by myself.
+        </Typography>
     }
 ]
 
@@ -53,7 +67,8 @@ interface IProps {
 }
 
 const Projects: FC<IProps> = props => {
-    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[1])
+    // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(undefined)
+    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[2])
 
     useEffect(() => {
         const projectBoxes = document.getElementsByClassName('project')
