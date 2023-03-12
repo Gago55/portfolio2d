@@ -21,6 +21,14 @@ import SecretPic5 from "./secret/pic5.png"
 import SecretPic6 from "./secret/pic6.png"
 import SecretPic7 from "./secret/pic7.png"
 
+import CarPreview from "./car/preview.png"
+import CarPic1 from "./car/pic1.png"
+import CarPic2 from "./car/pic2.png"
+import CarPic3 from "./car/pic3.png"
+import CarPic4 from "./car/pic4.png"
+import CarPic5 from "./car/pic5.png"
+import CarPic6 from "./car/pic6.png"
+import CarPic7 from "./car/pic7.png"
 
 export const CCImages = {
     preview: CCPreview,
@@ -42,5 +50,18 @@ export const SecretImages = {
         SecretPic5,
         SecretPic6,
         SecretPic7
+    ]
+}
+
+export const CarImages = {
+    preview: CarPreview,
+    images: [
+        CarPic1,
+        CarPic2,
+        CarPic3,
+        CarPic4,
+        CarPic5,
+        CarPic6,
+        CarPic7
     ]
 }
