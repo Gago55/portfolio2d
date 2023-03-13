@@ -3,7 +3,7 @@ import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography 
 import { Flex, Shift } from '../common/Helpers';
 import ProjectDetailedView from './ProjectDetailedView';
 import { ToolNameType, ToolType } from '../About/About';
-import { CarImages, CCImages, SecretImages, ShadowImages } from '../../assets/projects/projectImages';
+import { CarImages, CCImages, SecretImages, ShadowImages, TelegramImages } from '../../assets/projects/projectImages';
 
 export type ProjectType = {
     title: string
@@ -66,12 +66,27 @@ const projects: ProjectType[] = [
         title: 'Car Forest', preview: CarImages.preview, date: "2020", isPet: false,
         images: CarImages.images,
         tools: ['Javascript', 'React', 'ThreeJS', 'MUI'],
-        url: 'http://secret-contracts.com',
-        extraUrls: [{ title: 'Source', url: 'https://github.com/Gago55/Secret-Contract-Verifier' }],
+        url: 'http://51.254.113.253/g/car/',
+        extraUrls: [],
         description: <Typography>
             &emsp;Car Forest is one of my one-time projects, that I've done as freelancer. The customer was a car tunning company.<br />
             &emsp;Car Forest is web 3D tool. The company's employees use it to demonstrate their clients how will be looking client's cars after tunning.<br />
             &emsp;In app you can load one of three car models, change car color, set texture on car instead of color and do same thing only for special parts of car (doors, hood, bumper, etc).
+        </Typography>
+    },
+    {
+        title: 'Telegram Bots', preview: TelegramImages.preview, date: "2021", isPet: false,
+        images: TelegramImages.images,
+        tools: ['Javascript', 'NodeJS', 'Telegram Bots', 'ExpressJS', 'MongoDB'],
+        url: '',
+        extraUrls: [
+            { title: 'Weightclass Checker', url: 'https://t.me/ufc4weightclass_bot' },
+            { title: 'Fighters Stats', url: 'https://t.me/ufc4fighters_bot' }
+        ],
+        description: <Typography>
+            &emsp;I've created two telegram bots for <Link onClick={() => window.open('https://www.ea.com/games/ufc/ufc-4', '_blank')}>EA Sports UFC 4</Link> game community, <i>UFC 4 Weightclass Checker</i> and <i>UFC 4 Fighters Stats</i>.<br />
+            &emsp; UFC 4 Weightclass Checker - there is Online World Championship (hereinafter referred to as OWC) mode in the game, which is most played one for players. Players can't choose the weight class in OWC  to play. Weight class of OWC is changing every hour. The problem is that some players have favorite weight classes and hated ones. So with bot players can check what weight class is live in OWC at that moment without lunching the game. Also players can check weight classes' day schedule, check when will be exact weight class, set reminder for their favorite weight class, set allowed hours for their remainder. The bot have more than 500 users.<br />
+            &emsp; UFC 4 Fighters Stats - there are more than 350 fighters in game. The developers add new fighters and change existed ones' states periodical. So with bot players can check fighters stats. Also users can select two fighters and compare their stats (mostly uses this feature to make gameplan for their coming fight). Admins can change fighters states using bot command. The bot have more than 850 users. You can check some statistics in the pictures below.
         </Typography>
     }
 ]
@@ -81,7 +96,7 @@ interface IProps {
 
 const Projects: FC<IProps> = props => {
     // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(undefined)
-    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[3])
+    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[4])
 
     useEffect(() => {
         const projectBoxes = document.getElementsByClassName('project')
@@ -114,7 +129,7 @@ const Projects: FC<IProps> = props => {
             <Flex box sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                justifyContent: 'space-evenly',
+                // justifyContent: 'space-evenly',
                 gap: 5
 
             }}>

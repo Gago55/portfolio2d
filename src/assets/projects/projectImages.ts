@@ -30,6 +30,17 @@ import CarPic5 from "./car/pic5.png"
 import CarPic6 from "./car/pic6.png"
 import CarPic7 from "./car/pic7.png"
 
+import TelegramPreview from "./telegram/preview.png"
+import TelegramPic1 from "./telegram/pic1.png"
+import TelegramPic2 from "./telegram/pic2.png"
+import TelegramPic3 from "./telegram/pic3.png"
+import TelegramPic4 from "./telegram/pic4.png"
+import TelegramPic5 from "./telegram/pic5.png"
+import TelegramPic6 from "./telegram/pic6.png"
+import TelegramPic7 from "./telegram/pic7.png"
+import TelegramPic8 from "./telegram/pic8.png"
+import TelegramPic9 from "./telegram/pic9.png"
+
 export const CCImages = {
     preview: CCPreview,
     images: [CCPic1, CCPic2, CCPic3, CCPic4]
@@ -63,5 +74,20 @@ export const CarImages = {
         CarPic5,
         CarPic6,
         CarPic7
+    ]
+}
+
+export const TelegramImages = {
+    preview: TelegramPreview,
+    images: [
+        TelegramPic1,
+        TelegramPic2,
+        TelegramPic3,
+        TelegramPic4,
+        TelegramPic5,
+        TelegramPic6,
+        TelegramPic7,
+        TelegramPic8,
+        TelegramPic9
     ]
 }
