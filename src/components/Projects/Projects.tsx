@@ -3,7 +3,7 @@ import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography 
 import { Flex, Shift } from '../common/Helpers';
 import ProjectDetailedView from './ProjectDetailedView';
 import { ToolNameType, ToolType } from '../About/About';
-import { CarImages, CCImages, SecretImages, ShadowImages, TelegramImages } from '../../assets/projects/projectImages';
+import { CarImages, CCImages, FloorImages, SecretImages, ShadowImages, TelegramImages, ViewersImages } from '../../assets/projects/projectImages';
 
 export type ProjectType = {
     title: string
@@ -61,7 +61,13 @@ const projects: ProjectType[] = [
             &emsp;The app has two components: docker image and web app. <Link onClick={() => window.open('https://hub.docker.com/r/gago55/secret-contract-verifier', '_blank')}>The docker image</Link> compiles contract source code to binary code, calculate hash of result file and compare it with given hash from user. In web app users can see all smart contracts deployed in blockchain, see verified contract's source code, and developers can attempt to verify their contracts. More about this project you can learn by reading <Link onClick={() => window.open('https://es.linkedin.com/in/manvel-arzumanyan-18623b5a', '_blank')}>my partner's</Link> and my <Link onClick={() => window.open('https://github.com/scrtlabs/Grants/issues/7', '_blank')}>proposal</Link> for Secret Network written before project has been done. Development of app fully done by myself.
         </Typography>
     },
+    // fc
     // gc
+    // playWithFriend
+    // stengrograpy
+    // tetirs
+    // unity games
+    // dashboard
     {
         title: 'Car Forest', preview: CarImages.preview, date: "2020", isPet: false,
         images: CarImages.images,
@@ -88,6 +94,34 @@ const projects: ProjectType[] = [
             &emsp; UFC 4 Weightclass Checker - there is Online World Championship (hereinafter referred to as OWC) mode in the game, which is most played one for players. Players can't choose the weight class in OWC  to play. Weight class of OWC is changing every hour. The problem is that some players have favorite weight classes and hated ones. So with bot players can check what weight class is live in OWC at that moment without lunching the game. Also players can check weight classes' day schedule, check when will be exact weight class, set reminder for their favorite weight class, set allowed hours for their remainder. The bot have more than 500 users.<br />
             &emsp; UFC 4 Fighters Stats - there are more than 350 fighters in game. The developers add new fighters and change existed ones' states periodical. So with bot players can check fighters stats. Also users can select two fighters and compare their stats (mostly uses this feature to make gameplan for their coming fight). Admins can change fighters states using bot command. The bot have more than 850 users. You can check some statistics in the pictures below.
         </Typography>
+    }, {
+        title: '3D Viewers', preview: ViewersImages.preview, date: "2017-2018", isPet: false,
+        images: ViewersImages.images,
+        tools: ['Javascript', 'ThreeJS'],
+        url: '',
+        extraUrls: [
+            { title: 'Viewer 1', url: 'http://51.254.113.253/g/Logo/' },
+            { title: 'Viewer 2', url: 'http://51.254.113.253/g/mic/Mic3.htm' },
+            { title: 'Viewer 3', url: 'http://51.254.113.253/g/Mars/' },
+            { title: 'Viewer 4', url: 'http://51.254.113.253/g/LightsInCubes/' },
+            { title: 'Viewer 5', url: 'http://51.254.113.253/g/Stars/' },
+
+        ],
+        description: <Typography>
+            &emsp; Here are some saved one-time projects I did early in my freelance career. The projects mostly simple 3D viewers, some ones with extra features.
+        </Typography>
+    }, {
+        title: 'Floor Planner', preview: FloorImages.preview, date: "2022", isPet: false,
+        images: FloorImages.images,
+        tools: ['Javascript', 'Typescript', 'React', 'ThreeJS', 'MUI'],
+        url: 'http://3.145.161.236/g/fc/',
+        extraUrls: [],
+        description: <Typography>
+            &emsp;Floor Planner is the project I've created in  <Link onClick={() => {
+
+            }}>Greenberg Casework Company</Link>. I've built it from scratch by myself.<br />
+            &emsp;Floor Planner is simple web tool to create floor plans. The created floor plan can be itenegrated to our  <Link onClick={() => window.open('https://www.garagecabinets.com', '_blank')}>online 3D shop</Link>.
+        </Typography >
     }
 ]
 
@@ -96,7 +130,7 @@ interface IProps {
 
 const Projects: FC<IProps> = props => {
     // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(undefined)
-    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[4])
+    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[5])
 
     useEffect(() => {
         const projectBoxes = document.getElementsByClassName('project')
@@ -154,6 +188,7 @@ const Projects: FC<IProps> = props => {
                             <CardOverflow>
                                 <AspectRatio ratio="2">
                                     <img
+
                                         src={p.preview}
                                         alt=""
                                     />

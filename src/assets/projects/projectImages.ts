@@ -41,6 +41,25 @@ import TelegramPic7 from "./telegram/pic7.png"
 import TelegramPic8 from "./telegram/pic8.png"
 import TelegramPic9 from "./telegram/pic9.png"
 
+import ViewersPreview from "./viewers/preview.png"
+import ViewersPic1 from "./viewers/pic1.png"
+import ViewersPic2 from "./viewers/pic2.png"
+import ViewersPic3 from "./viewers/pic3.png"
+import ViewersPic4 from "./viewers/pic4.png"
+import ViewersPic5 from "./viewers/pic5.png"
+import ViewersPic6 from "./viewers/pic6.png"
+import ViewersPic7 from "./viewers/pic7.png"
+import ViewersPic8 from "./viewers/pic8.png"
+import ViewersPic9 from "./viewers/pic9.png"
+
+import FloorPreview from "./floor/preview.png"
+import FloorPic1 from "./floor/pic1.png"
+import FloorPic2 from "./floor/pic2.png"
+import FloorPic3 from "./floor/pic3.png"
+import FloorPic4 from "./floor/pic4.png"
+import FloorPic5 from "./floor/pic5.png"
+import FloorPic6 from "./floor/pic6.png"
+
 export const CCImages = {
     preview: CCPreview,
     images: [CCPic1, CCPic2, CCPic3, CCPic4]
@@ -89,5 +108,32 @@ export const TelegramImages = {
         TelegramPic7,
         TelegramPic8,
         TelegramPic9
+    ]
+}
+
+export const ViewersImages = {
+    preview: ViewersPreview,
+    images: [
+        ViewersPic1,
+        ViewersPic2,
+        ViewersPic3,
+        ViewersPic4,
+        ViewersPic5,
+        ViewersPic6,
+        ViewersPic7,
+        ViewersPic8,
+        ViewersPic9,
+    ]
+}
+
+export const FloorImages = {
+    preview: FloorPreview,
+    images: [
+        FloorPic1,
+        FloorPic2,
+        FloorPic3,
+        FloorPic4,
+        FloorPic5,
+        FloorPic6
     ]
 }
