@@ -60,6 +60,14 @@ import FloorPic4 from "./floor/pic4.png"
 import FloorPic5 from "./floor/pic5.png"
 import FloorPic6 from "./floor/pic6.png"
 
+import TetrisPreview from "./tetris/preview.png"
+import TetrisPic1 from "./tetris/pic1.png"
+import TetrisPic2 from "./tetris/pic2.png"
+import TetrisPic3 from "./tetris/pic3.png"
+import TetrisPic4 from "./tetris/pic4.png"
+import TetrisPic5 from "./tetris/pic5.png"
+import TetrisPic6 from "./tetris/pic6.png"
+
 export const CCImages = {
     preview: CCPreview,
     images: [CCPic1, CCPic2, CCPic3, CCPic4]
@@ -135,5 +143,17 @@ export const FloorImages = {
         FloorPic4,
         FloorPic5,
         FloorPic6
+    ]
+}
+
+export const TetrisImages = {
+    preview: TetrisPreview,
+    images: [
+        TetrisPic1,
+        TetrisPic2,
+        TetrisPic3,
+        TetrisPic4,
+        TetrisPic5,
+        TetrisPic6
     ]
 }

@@ -24,12 +24,12 @@ const ProjectDetailedView: FC<IProps> = ({ project, ...props }) => {
             >
                 <ModalClose />
                 <Typography id="layout-modal-title" component="h2">  {project.title}
-                    <Typography level="body1" sx={{ ml: 2, fontSize: 16, color: 'text.secondary' }}>
+                    {/* <Typography level="body1" sx={{ ml: 2, fontSize: 16, color: 'text.secondary' }}>
                         {project.date}
-                    </Typography>
-                    {/* <Typography sx={{ ml: 2, fontSize: 16, color: 'text.secondary' }}>
-                        {project.isPet ? "Pet" : ''}
                     </Typography> */}
+                    <Typography sx={{ ml: 2, fontSize: 16, color: 'text.secondary' }}>
+                        {project.isPet ? "Pet Project" : ''}
+                    </Typography>
                 </Typography>
                 <Divider sx={{ mb: 2 }} />
 
