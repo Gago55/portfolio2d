@@ -193,7 +193,7 @@ const Carousel: FC<IProps> = props => {
                         }} />
                     }
                     {
-                        images.map(img => <Box sx={{
+                        images.map(img => <Box key={img.id} sx={{
                             width: '100%', height: '100%',
                             display: (img === selectedImage || img === prevSelectedId) ? undefined : "none",
                             animation:

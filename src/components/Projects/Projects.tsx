@@ -4,6 +4,7 @@ import { Flex, Shift } from '../common/Helpers';
 import ProjectDetailedView from './ProjectDetailedView';
 import { ToolNameType, ToolType } from '../About/About';
 import { CarImages, CCImages, FloorImages, SecretImages, ShadowImages, TelegramImages, ViewersImages } from '../../assets/projects/projectImages';
+import PetsIcon from '@mui/icons-material/Pets';
 
 export type ProjectType = {
     title: string
@@ -61,7 +62,6 @@ const projects: ProjectType[] = [
             &emsp;The app has two components: docker image and web app. <Link onClick={() => window.open('https://hub.docker.com/r/gago55/secret-contract-verifier', '_blank')}>The docker image</Link> compiles contract source code to binary code, calculate hash of result file and compare it with given hash from user. In web app users can see all smart contracts deployed in blockchain, see verified contract's source code, and developers can attempt to verify their contracts. More about this project you can learn by reading <Link onClick={() => window.open('https://es.linkedin.com/in/manvel-arzumanyan-18623b5a', '_blank')}>my partner's</Link> and my <Link onClick={() => window.open('https://github.com/scrtlabs/Grants/issues/7', '_blank')}>proposal</Link> for Secret Network written before project has been done. Development of app fully done by myself.
         </Typography>
     },
-    // fc
     // gc
     // playWithFriend
     // stengrograpy
@@ -129,8 +129,8 @@ interface IProps {
 }
 
 const Projects: FC<IProps> = props => {
-    // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(undefined)
-    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[5])
+    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(undefined)
+    // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[5])
 
     useEffect(() => {
         const projectBoxes = document.getElementsByClassName('project')
@@ -169,7 +169,7 @@ const Projects: FC<IProps> = props => {
             }}>
 
                 {projects.map(p =>
-                    <Box id={p === selectedProject ? 'selectedProjectBox' : ''} className='project'
+                    <Box id={p === selectedProject ? 'selectedProjectBox' : ''} key={p.title} className='project'
                         sx={{
                             opacity: 1,
                             perspective: '1000px',
@@ -194,9 +194,14 @@ const Projects: FC<IProps> = props => {
                                     />
                                 </AspectRatio>
                             </CardOverflow>
-                            <Typography level="h2" sx={{ fontSize: 'md', my: 2 }}>
-                                {p.title}
-                            </Typography>
+
+                            <CardOverflow sx={{ display: 'flex', alignItems: 'center' }}>
+                                <Typography level="h2" sx={{ fontSize: 'md', my: 2 }}>
+                                    {p.title}
+                                </Typography>
+                                <Shift />
+                                {p.isPet && <PetsIcon />}
+                            </CardOverflow>
                             {/* <Typography level="body2" sx={{ mt: 0.5, mb: 2 }}>
                                 California
                             </Typography> */}
@@ -213,9 +218,9 @@ const Projects: FC<IProps> = props => {
                             >
 
                                 {/* <Divider orientation="vertical" /> */}
-                                <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
+                                {/* <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
                                     {p.isPet ? "Pet Project" : ''}
-                                </Typography>
+                                </Typography> */}
                                 <Shift />
                                 <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
                                     {p.date}

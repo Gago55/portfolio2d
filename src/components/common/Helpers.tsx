@@ -37,9 +37,9 @@ interface IFlexProps extends SheetProps {
     sx?: SxProps
 }
 
-export const Flex = ({ children, column, fullWidth, centerX, centerY, sx, ...props }: IFlexProps) => {
+export const Flex = ({ children, column, fullWidth, centerX, centerY, box, sx, ...props }: IFlexProps) => {
 
-    return props.box
+    return box
         ? <Box sx={{
             display: 'flex',
             flexDirection: column ? 'column' : undefined,
