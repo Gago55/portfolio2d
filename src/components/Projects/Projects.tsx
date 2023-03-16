@@ -3,7 +3,7 @@ import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography 
 import { Flex, Shift } from '../common/Helpers';
 import ProjectDetailedView from './ProjectDetailedView';
 import { ToolNameType, ToolType } from '../About/About';
-import { CarImages, CCImages, FloorImages, SecretImages, ShadowImages, TelegramImages, TetrisImages, ViewersImages } from '../../assets/projects/projectImages';
+import { CarImages, CCImages, FloorImages, RobyImages, SecretImages, ShadowImages, TelegramImages, TetrisImages, ViewersImages } from '../../assets/projects/projectImages';
 import PetsIcon from '@mui/icons-material/Pets';
 
 export type ProjectType = {
@@ -65,7 +65,6 @@ const projects: ProjectType[] = [
     // gc
     // playWithFriend
     // stengrograpy
-    // tetirs
     // unity games
     // dashboard
     {
@@ -120,13 +119,13 @@ const projects: ProjectType[] = [
             &emsp;Floor Planner is the project I've created in  <Link onClick={() => {
 
             }}>Greenberg Casework Company</Link>. I've built it from scratch by myself.<br />
-            &emsp;Floor Planner is simple web tool to create floor plans. The created floor plan can be itenegrated to our  <Link onClick={() => window.open('https://www.garagecabinets.com', '_blank')}>online 3D shop</Link>.
+            &emsp;Floor Planner is simple web tool to create floor plans. The created floor plan can be integrated to our  <Link onClick={() => window.open('https://www.garagecabinets.com', '_blank')}>online 3D shop</Link>.
         </Typography >
     },
     {
         title: 'Tetris in CMD',
         isPet: true,
-        date: '2018',
+        date: '2015',
         preview: TetrisImages.preview,
         images: TetrisImages.images,
         tools: ['C#'],
@@ -139,6 +138,23 @@ const projects: ProjectType[] = [
             &emsp;After learning OOP, I decided to create a Tetris game using OOP principles to reinforce my knowledge. The game was written in C# for Windows CMD.<br />
             &emsp;If You want to play it without Visual Studio you can download the archive file from github. Note that game was written for Windows CMD and will not work properly with <Link onClick={() => window.open('https://en.wikipedia.org/wiki/Windows_Terminal', '_blank')}>Windows Terminal</Link> (which was by default integrated into Windows 11).
         </Typography>
+    },
+    {
+        title: 'Roby',
+        isPet: true,
+        date: '2015',
+        preview: RobyImages.preview,
+        images: RobyImages.images,
+        tools: ['Unity3D', 'C#'],
+        url: '',
+        extraUrls: [
+            { title: 'Archive File', url: 'https://drive.google.com/file/d/19RAP81Us0LrssU-1v78D3GqMiVOUB2LV/view?usp=sharing' },
+        ],
+        description: <Typography>
+            &emsp;Roby is a 3D game built with Unity3D. I built it for the final exam of the Game Development III workshop in Tumo.<br />
+            &emsp;Roby can move, rush, jump, and shoot. The goal of the game is to collect all coins and kill all enemies. <br />
+            &emsp;If your device running on Windows you can download and play it.
+        </Typography>
     }
 ]
 
@@ -147,7 +163,7 @@ interface IProps {
 
 const Projects: FC<IProps> = props => {
     const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(undefined)
-    // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[5])
+    // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[8])
 
     useEffect(() => {
         const projectBoxes = document.getElementsByClassName('project')

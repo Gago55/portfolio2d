@@ -68,6 +68,16 @@ import TetrisPic4 from "./tetris/pic4.png"
 import TetrisPic5 from "./tetris/pic5.png"
 import TetrisPic6 from "./tetris/pic6.png"
 
+import RobyPreview from "./roby/preview.png"
+import RobyGif1 from "./roby/gif1.gif"
+import RobyGif2 from "./roby/gif2.gif"
+import RobyPic1 from "./roby/pic1.png"
+import RobyPic2 from "./roby/pic2.png"
+import RobyPic3 from "./roby/pic3.png"
+import RobyPic4 from "./roby/pic4.png"
+import RobyPic5 from "./roby/pic5.png"
+import RobyPic6 from "./roby/pic6.png"
+
 export const CCImages = {
     preview: CCPreview,
     images: [CCPic1, CCPic2, CCPic3, CCPic4]
@@ -155,5 +165,18 @@ export const TetrisImages = {
         TetrisPic4,
         TetrisPic5,
         TetrisPic6
+    ]
+}
+
+export const RobyImages = {
+    preview: RobyPreview,
+    images: [
+        RobyGif1,
+        RobyPic1,
+        RobyPic2,
+        RobyPic3,
+        RobyPic4,
+        RobyPic5,
+        RobyPic6
     ]
 }
