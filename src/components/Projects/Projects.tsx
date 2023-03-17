@@ -3,7 +3,7 @@ import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography 
 import { Flex, Shift } from '../common/Helpers';
 import ProjectDetailedView from './ProjectDetailedView';
 import { ToolNameType, ToolType } from '../About/About';
-import { CarImages, CCImages, FloorImages, RobyImages, SecretImages, ShadowImages, TelegramImages, TetrisImages, ViewersImages } from '../../assets/projects/projectImages';
+import { CarImages, CCImages, FloorImages, GlobeImages, RobyImages, SecretImages, ShadowImages, TelegramImages, TetrisImages, ViewersImages } from '../../assets/projects/projectImages';
 import PetsIcon from '@mui/icons-material/Pets';
 
 export type ProjectType = {
@@ -62,11 +62,23 @@ const projects: ProjectType[] = [
             &emsp;The app has two components: docker image and web app. <Link onClick={() => window.open('https://hub.docker.com/r/gago55/secret-contract-verifier', '_blank')}>The docker image</Link> compiles contract source code to binary code, calculate hash of result file and compare it with given hash from user. In web app users can see all smart contracts deployed in blockchain, see verified contract's source code, and developers can attempt to verify their contracts. More about this project you can learn by reading <Link onClick={() => window.open('https://es.linkedin.com/in/manvel-arzumanyan-18623b5a', '_blank')}>my partner's</Link> and my <Link onClick={() => window.open('https://github.com/scrtlabs/Grants/issues/7', '_blank')}>proposal</Link> for Secret Network written before project has been done. Development of app fully done by myself.
         </Typography>
     },
-    // gc
+    {
+        title: 'Globe Configurator',
+        isPet: false,
+        date: '2022-present',
+        preview: GlobeImages.preview,
+        images: GlobeImages.images,
+        tools: ['Javascript', 'Typescript', 'React', 'ThreeJS', 'MUI'],
+        url: 'http://51.254.113.253/g/gc_/',
+        extraUrls: [
+        ],
+        description: <Typography>
+            &emsp;Globe Configurator is a project created by me and  <Link onClick={() => window.open('https://es.linkedin.com/in/manvel-arzumanyan-18623b5a', '_blank')}>my partner</Link>. Development of app fully done by myself.<br />
+            &emsp;Globe Configurator is web 3D tool to create custom globe for your website. You can add points on globe from list of cities, or just clicking on globe. You can change all points' size and color, or do it for individual points. You can add hints for points, and choose method of displaying it (always or on hover). You can choose globe texture from gallery or upload yours. You can choose globe position, camera options (enable/disable rotation, zoom, pan, auto rotation). You can change globe atmosphere color and background color. You can set background color transparent if you will put globe over some html. After all you can download static files with your globe configurations and put it on your web site. The project is still under development, and is currently free
+        </Typography>
+    },
     // playWithFriend
     // stengrograpy
-    // unity games
-    // dashboard
     {
         title: 'Car Forest', preview: CarImages.preview, date: "2020", isPet: false,
         images: CarImages.images,
@@ -125,7 +137,7 @@ const projects: ProjectType[] = [
     {
         title: 'Tetris in CMD',
         isPet: true,
-        date: '2015',
+        date: '2018',
         preview: TetrisImages.preview,
         images: TetrisImages.images,
         tools: ['C#'],
@@ -162,8 +174,8 @@ interface IProps {
 }
 
 const Projects: FC<IProps> = props => {
-    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(undefined)
-    // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[8])
+    // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(undefined)
+    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[3])
 
     useEffect(() => {
         const projectBoxes = document.getElementsByClassName('project')

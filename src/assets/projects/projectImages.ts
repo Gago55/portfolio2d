@@ -70,13 +70,23 @@ import TetrisPic6 from "./tetris/pic6.png"
 
 import RobyPreview from "./roby/preview.png"
 import RobyGif1 from "./roby/gif1.gif"
-import RobyGif2 from "./roby/gif2.gif"
 import RobyPic1 from "./roby/pic1.png"
 import RobyPic2 from "./roby/pic2.png"
 import RobyPic3 from "./roby/pic3.png"
 import RobyPic4 from "./roby/pic4.png"
 import RobyPic5 from "./roby/pic5.png"
 import RobyPic6 from "./roby/pic6.png"
+
+import GlobePreview from "./globe/preview.png"
+import GlobePic1 from "./globe/pic1.png"
+import GlobePic2 from "./globe/pic2.png"
+import GlobePic3 from "./globe/pic3.png"
+import GlobePic4 from "./globe/pic4.png"
+import GlobePic5 from "./globe/pic5.png"
+import GlobePic6 from "./globe/pic6.png"
+import GlobePic7 from "./globe/pic7.png"
+import GlobePic8 from "./globe/pic8.png"
+import GlobePic9 from "./globe/pic9.png"
 
 export const CCImages = {
     preview: CCPreview,
@@ -178,5 +188,20 @@ export const RobyImages = {
         RobyPic4,
         RobyPic5,
         RobyPic6
+    ]
+}
+
+export const GlobeImages = {
+    preview: GlobePreview,
+    images: [
+        GlobePic1,
+        GlobePic2,
+        GlobePic3,
+        GlobePic4,
+        GlobePic5,
+        GlobePic6,
+        GlobePic7,
+        GlobePic8,
+        GlobePic9,
     ]
 }
