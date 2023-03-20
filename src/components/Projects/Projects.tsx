@@ -3,7 +3,7 @@ import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography 
 import { Flex, Shift } from '../common/Helpers';
 import ProjectDetailedView from './ProjectDetailedView';
 import { ToolNameType, ToolType } from '../About/About';
-import { CarImages, CCImages, FloorImages, GlobeImages, RobyImages, SecretImages, ShadowImages, TelegramImages, TetrisImages, ViewersImages } from '../../assets/projects/projectImages';
+import { CarImages, CCImages, FloorImages, GlobeImages, RobyImages, SecretImages, ShadowImages, SocketGameImages, TelegramImages, TetrisImages, ViewersImages } from '../../assets/projects/projectImages';
 import PetsIcon from '@mui/icons-material/Pets';
 
 export type ProjectType = {
@@ -167,6 +167,21 @@ const projects: ProjectType[] = [
             &emsp;Roby can move, rush, jump, and shoot. The goal of the game is to collect all coins and kill all enemies. <br />
             &emsp;If your device running on Windows you can download and play it.
         </Typography>
+    },
+    {
+        title: 'WebSocket Game',
+        isPet: true,
+        date: '2018',
+        preview: SocketGameImages.preview,
+        images: SocketGameImages.images,
+        tools: ['Javascript', 'ThreeJS', 'WebSockets', 'NodeJS'],
+        url: 'http://51.254.113.253:4001',
+        extraUrls: [
+        ],
+        description: <Typography>
+            &emsp;This game is proof of concept of mobile wireless multi-user real-time control. This is a simple 3D game where player/players must move the sphere left and right to not hit the red boxes. The players control their spheres using their mobiles.<br />
+            &emsp;If you want to try it, open the app on your pc first. After it, choose the single or multiplayer mode, write the players' names, and click confirm. After it, scan the QR code with your phone to get the link and open it. After all, red circles will turn green, and the Start button will be available, click it on pc and start playing with your phone.
+        </Typography>
     }
 ]
 
@@ -175,7 +190,7 @@ interface IProps {
 
 const Projects: FC<IProps> = props => {
     // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(undefined)
-    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[3])
+    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[10])
 
     useEffect(() => {
         const projectBoxes = document.getElementsByClassName('project')
