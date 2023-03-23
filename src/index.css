@@ -18,6 +18,12 @@ code {
     monospace;
 }
 
-.tabWrapper {
-  margin-top: 20px;
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #505152;
+  border-radius: 2px;
 }

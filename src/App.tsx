@@ -40,7 +40,7 @@ const App: FC<IProps> = (props) => {
               right: 'var(--List-item-paddingRight)', // change to `0` to stretch to the edge.
               bottom: 0,
               height: 3,
-              bgcolor: 'primary.400',
+              bgcolor: '#9b9b9b',
             },
           },
         }}

@@ -16,6 +16,7 @@ export type ProjectType = {
     description: ReactNode
     url: string,
     extraUrls: { title: string, url: string }[]
+    imagesRatio?: number
 }
 
 const projects: ProjectType[] = [
@@ -38,6 +39,7 @@ const projects: ProjectType[] = [
     {
         title: 'Shadow Decor', preview: ShadowImages.preview, date: "2019-2020", isPet: false,
         images: ShadowImages.images,
+        imagesRatio: 1.7,
         tools: ['Javascript', 'React', 'ThreeJS', 'MUI', 'ExpressJS', 'MongoDB'],
         url: 'https://shadowdecor.com/editor/', extraUrls: [],
         description: <Typography>
@@ -94,6 +96,7 @@ const projects: ProjectType[] = [
     {
         title: 'Telegram Bots', preview: TelegramImages.preview, date: "2021", isPet: false,
         images: TelegramImages.images,
+        imagesRatio: 0.564,
         tools: ['Javascript', 'NodeJS', 'Telegram Bots', 'ExpressJS', 'MongoDB'],
         url: '',
         extraUrls: [
@@ -140,6 +143,7 @@ const projects: ProjectType[] = [
         date: '2018',
         preview: TetrisImages.preview,
         images: TetrisImages.images,
+        imagesRatio: 0.588,
         tools: ['C#'],
         url: '',
         extraUrls: [
@@ -189,8 +193,8 @@ interface IProps {
 }
 
 const Projects: FC<IProps> = props => {
-    // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(undefined)
-    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[10])
+    const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(undefined)
+    // const [selectedProject, setSelectedProject] = useState<ProjectType | undefined>(projects[10])
 
     useEffect(() => {
         const projectBoxes = document.getElementsByClassName('project')
@@ -222,9 +226,13 @@ const Projects: FC<IProps> = props => {
             }}> */}
             <Flex box sx={{
                 display: 'flex',
+                // gridTemplateColumns: 'auto auto auto',
                 flexWrap: 'wrap',
-                // justifyContent: 'space-evenly',
-                gap: 5
+                justifyContent: 'space-evenly',
+                overflowY: 'auto',
+                maxHeight: window.innerHeight - 100,
+                gap: 5,
+                mt: 1
 
             }}>
 

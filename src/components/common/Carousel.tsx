@@ -40,11 +40,6 @@ const Flex = ({ children, column, fullWidth, centerX, centerY, sx, ...props }: I
 
 }
 
-interface IProps {
-    images: string[]
-    width: number | string
-}
-
 type ImageType = {
     src: string
     id: number
@@ -90,9 +85,15 @@ const slideRightOut = keyframes`
     } 
 `
 
+interface IProps {
+    images: string[]
+    width: number | string
+    ratio: number
+}
+
 const Carousel: FC<IProps> = props => {
     const imageRation = 1.7
-    const itemWidth = 100
+    const itemWidth = props.ratio > 1 ? 100 : 100 * props.ratio
 
     const ref = useRef<HTMLDivElement>(null)
     const dialogRef = useRef<HTMLDivElement>(null)
@@ -138,7 +139,7 @@ const Carousel: FC<IProps> = props => {
                             key={img.id}
                             sx={{
                                 width: itemWidth,
-                                height: itemWidth / imageRation,
+                                height: itemWidth / props.ratio,
                                 cursor: 'pointer',
                                 border: '2px solid #ffffff00',
                                 "&:hover": {
@@ -150,7 +151,7 @@ const Carousel: FC<IProps> = props => {
                             <img
                                 src={img.src} alt=''
                                 width={itemWidth}
-                                height={itemWidth / imageRation}
+                                height={itemWidth / props.ratio}
                             />
                         </Box>
 
@@ -158,10 +159,10 @@ const Carousel: FC<IProps> = props => {
                 </div>
                 {isOverFlow && <IconButton onClick={() => scroll('right')}><RightIcon /></IconButton>}
             </Flex>
-            <Dialog open={!!selectedImage} onClose={closeImageDialog} fullWidth maxWidth='lg'>
+            <Dialog open={!!selectedImage} onClose={closeImageDialog} fullWidth maxWidth={props.ratio > 1 ? 'lg' : 'xs'}>
                 <DialogContent ref={dialogRef} sx={{
                     position: 'relative', p: 0, overflow: 'hidden', background: '#121216',
-                    minHeight: (dialogRef.current ? dialogRef.current.clientWidth / imageRation : undefined)
+                    minHeight: (dialogRef.current ? dialogRef.current.clientWidth / props.ratio : undefined)
                 }}>
                     <CloseIcon sx={{
                         position: 'absolute',

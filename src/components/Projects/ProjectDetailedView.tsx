@@ -51,7 +51,7 @@ const ProjectDetailedView: FC<IProps> = ({ project, ...props }) => {
                             </Typography>
                         </Flex>
                         <OutlinedDiv label='Stack' labelPlacement='center' style={{ color: 'white' }}>
-                            {tools.filter(t => project.tools.includes(t.name)).map(t => <Chip onClick={() => { }} variant='soft' color='neutral' startDecorator={t.src ? <Avatar size="sm" src={t.src} /> : undefined}>{t.name}</Chip>)
+                            {tools.filter(t => project.tools.includes(t.name)).map(t => <Chip key={t.name} onClick={() => { }} variant='soft' color='neutral' startDecorator={t.src ? <Avatar size="sm" src={t.src} /> : undefined}>{t.name}</Chip>)
                             }
                         </OutlinedDiv>
                     </Sheet>
@@ -63,6 +63,7 @@ const ProjectDetailedView: FC<IProps> = ({ project, ...props }) => {
                         <Carousel
                             width={'80%'}
                             images={project.images}
+                            ratio={project.imagesRatio || 1.77}
                         />
                     </Flex>
                 </Flex>
@@ -71,7 +72,7 @@ const ProjectDetailedView: FC<IProps> = ({ project, ...props }) => {
 
                     <Flex sx={{ gap: 1 }}>
                         <Shift />
-                        {project.extraUrls.map(u => <Button color='neutral' variant='soft' endDecorator={<OpenInNewIcon />}
+                        {project.extraUrls.map(u => <Button key={u.title} color='neutral' variant='soft' endDecorator={<OpenInNewIcon />}
                             onClick={() => window.open(u.url, '_blank')}>{u.title}</Button>)}
                         {project.url && <Button color='neutral' variant='soft' endDecorator={<OpenInNewIcon />}
                             onClick={() => window.open(project.url, '_blank')}>Open</Button>}
