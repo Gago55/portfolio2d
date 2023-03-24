@@ -1,10 +1,14 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Tooltip, Sheet, List, ListItem, ListSubheader, ListDivider, ListItemButton, Typography, Divider, Link, IconButton } from "@mui/joy";
 import { Flex, Shift } from '../common/Helpers';
 import LaunchIcon from '@mui/icons-material/Launch'
 import Box from '@mui/material/Box';
 
 interface IProps {
+    selectedActivityId: number
+
+    setSelectedProjectId(value: undefined | number): void
+    setSelectedActivityId(value: number): void
     setTabId(id: number): void
 }
 
@@ -64,7 +68,10 @@ const Activities: FC<IProps> = props => {
                 <Typography>
                     &emsp;Secret Network is an open-source protocol that performs computations on encrypted data, bringing privacy to smart contracts and public blockchains.
                     <br />
-                    &emsp;I've collaborated with Secret Network and built for them Secret Contracts verification system, more about it you can learn in <Link onClick={() => props.setTabId(0)}>Projects Tab</Link>
+                    &emsp;I've collaborated with Secret Network and built for them Secret Contracts verification system, more about it you can learn in <Link onClick={() => {
+                        props.setTabId(0)
+                        props.setSelectedProjectId(2)
+                    }}>Projects Tab</Link>
                 </Typography>
             </>
         },
@@ -80,7 +87,11 @@ const Activities: FC<IProps> = props => {
         },
     ]
 
-    const [selectedActivity, setSelectedActivity] = useState(activities[0])
+    const [selectedActivity, setSelectedActivity] = useState(activities[props.selectedActivityId])
+
+    useEffect(() => {
+        setSelectedActivity(activities[props.selectedActivityId])
+    }, [props.selectedActivityId])
 
     return (
         <Flex box className='tabWrapper' centerX sx={{ width: 1, justifyContent: 'space-between', gap: 1 }}>

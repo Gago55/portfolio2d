@@ -4,15 +4,12 @@ import TabList from "@mui/joy/TabList";
 import TabPanel from "@mui/joy/TabPanel";
 import { useSnackbar } from "notistack";
 import { FC, useState } from "react";
-import { connect } from 'react-redux';
 import About from "./components/About/About";
 import Activities from "./components/Activities/Activities";
 import { Flex } from "./components/common/Helpers";
 import Projects from "./components/Projects/Projects";
-import { StateType } from "./redux/store";
 
 interface IProps {
-  email: string | undefined
 }
 
 const App: FC<IProps> = (props) => {
@@ -20,6 +17,9 @@ const App: FC<IProps> = (props) => {
   const { enqueueSnackbar } = useSnackbar()
 
   const [tabId, setTabId] = useState(0)
+  const [selectedActivityId, setSelectedActivityId] = useState(0)
+  const [selectedProjectId, setSelectedProjectId] = useState<undefined | number>(undefined)
+
 
   return <Flex centerX variant="soft" sx={{ height: "100%" }}   >
     <Tabs value={tabId} sx={{ width: .5, mt: 5 }} variant="soft">
@@ -49,17 +49,26 @@ const App: FC<IProps> = (props) => {
         <Tab variant="soft" onClick={() => setTabId(1)}>Activities</Tab>
         <Tab variant="soft" onClick={() => setTabId(2)}>About</Tab>
       </TabList>
-      <TabPanel value={0}><Projects /></TabPanel>
-      <TabPanel value={1}><Activities setTabId={setTabId} /></TabPanel>
+      <TabPanel value={0}>
+        <Projects
+          setTabId={setTabId}
+          selectedProjectId={selectedProjectId}
+          setSelectedProjectId={setSelectedProjectId}
+          setSelectedActivityId={setSelectedActivityId}
+        />
+      </TabPanel>
+      <TabPanel value={1}>
+        <Activities
+          setTabId={setTabId}
+          selectedActivityId={selectedActivityId}
+          setSelectedActivityId={setSelectedActivityId}
+          setSelectedProjectId={setSelectedProjectId}
+        />
+      </TabPanel>
       <TabPanel value={2}><About /></TabPanel>
     </Tabs>
   </Flex>
 
 }
 
-const mapStateToProps = (state: StateType) => ({
-  email: state.appReducer.email,
-})
-
-export default connect(mapStateToProps, {
-})(App);
+export default App

@@ -1,23 +1,19 @@
+import colors from '@mui/joy/colors';
+import {
+  CssVarsProvider, extendTheme as extendJoyTheme, shouldSkipGeneratingVar as joyShouldSkipGeneratingVar
+} from '@mui/joy/styles';
+import {
+  experimental_extendTheme as extendMuiTheme,
+  shouldSkipGeneratingVar as muiShouldSkipGeneratingVar
+} from '@mui/material/styles';
+import { deepmerge } from '@mui/utils';
 import { SnackbarProvider } from 'notistack';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
 import { BrowserRouter } from "react-router-dom";
 import App from './App';
 import './index.css';
-import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
-import { deepmerge } from '@mui/utils';
-import {
-  experimental_extendTheme as extendMuiTheme,
-  shouldSkipGeneratingVar as muiShouldSkipGeneratingVar,
-} from '@mui/material/styles';
-import colors from '@mui/joy/colors';
-import {
-  extendTheme as extendJoyTheme,
-  CssVarsProvider,
-  shouldSkipGeneratingVar as joyShouldSkipGeneratingVar,
-} from '@mui/joy/styles';
 
 const { unstable_sxConfig: muiSxConfig, ...muiTheme } = extendMuiTheme({
   // This is required to point to `var(--joy-*)` because we are using
@@ -103,20 +99,20 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter >
-        <CssVarsProvider
-          theme={mergedTheme}
-          shouldSkipGeneratingVar={(keys) =>
-            muiShouldSkipGeneratingVar(keys) || joyShouldSkipGeneratingVar(keys)
-          }
-        >
-          <SnackbarProvider>
-            <App />
-          </SnackbarProvider>
-        </CssVarsProvider>
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter >
+      <CssVarsProvider
+        theme={mergedTheme}
+        shouldSkipGeneratingVar={(keys) =>
+          muiShouldSkipGeneratingVar(keys) || joyShouldSkipGeneratingVar(keys)
+        }
+        defaultMode='dark'
+      // modeStorageKey=''
+      >
+        <SnackbarProvider>
+          <App />
+        </SnackbarProvider>
+      </CssVarsProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
