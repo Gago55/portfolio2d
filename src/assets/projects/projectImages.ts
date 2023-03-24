@@ -89,6 +89,8 @@ import GlobePic8 from "./globe/pic8.png"
 import GlobePic9 from "./globe/pic9.png"
 
 import SocketGamePreview from "./socketGame/preview.png"
+import SocketGameGif1 from "./socketGame/gif1.gif"
+import SocketGameGif2 from "./socketGame/gif2.gif"
 import SocketGamePic1 from "./socketGame/pic1.png"
 import SocketGamePic2 from "./socketGame/pic2.png"
 import SocketGamePic3 from "./socketGame/pic3.png"
@@ -215,6 +217,8 @@ export const GlobeImages = {
 export const SocketGameImages = {
     preview: SocketGamePreview,
     images: [
+        SocketGameGif1,
+        SocketGameGif2,
         SocketGamePic1,
         SocketGamePic2,
         SocketGamePic3,
