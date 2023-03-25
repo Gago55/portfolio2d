@@ -2,7 +2,6 @@ import { Tabs } from "@mui/joy";
 import Tab, { tabClasses } from "@mui/joy/Tab";
 import TabList from "@mui/joy/TabList";
 import TabPanel from "@mui/joy/TabPanel";
-import { useSnackbar } from "notistack";
 import { FC, useState } from "react";
 import About from "./components/About/About";
 import Activities from "./components/Activities/Activities";
@@ -14,9 +13,7 @@ interface IProps {
 
 const App: FC<IProps> = (props) => {
 
-  const { enqueueSnackbar } = useSnackbar()
-
-  const [tabId, setTabId] = useState(0)
+  const [tabId, setTabId] = useState(1)
   const [selectedActivityId, setSelectedActivityId] = useState(0)
   const [selectedProjectId, setSelectedProjectId] = useState<undefined | number>(undefined)
 

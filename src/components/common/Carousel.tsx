@@ -92,13 +92,13 @@ interface IProps {
 }
 
 const Carousel: FC<IProps> = props => {
-    const imageRation = 1.7
+    // const imageRation = 1.7
     const itemWidth = props.ratio > 1 ? 100 : 100 * props.ratio
 
     const ref = useRef<HTMLDivElement>(null)
     const dialogRef = useRef<HTMLDivElement>(null)
     const [isOverFlow, setIsOverFlow] = useState(false)
-    const [images, setImages] = useState<ImageType[]>(props.images.map((img, i) => ({ src: img, id: i })))
+    const [images] = useState<ImageType[]>(props.images.map((img, i) => ({ src: img, id: i })))
     const [selectedImage, setSelectedImage] = useState<ImageType | undefined>(undefined)///images[0])
     const [prevSelectedId, setPrevSelectedId] = useState<ImageType | undefined>(undefined)
     const [, forceRerender] = useState([])

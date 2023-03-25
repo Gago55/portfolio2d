@@ -1,10 +1,10 @@
-import React, { FC, useState, useEffect, useRef, ReactNode } from 'react'
+import PetsIcon from '@mui/icons-material/Pets';
 import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography } from "@mui/joy";
+import { FC, ReactNode, useEffect, useRef, useState } from 'react';
+import { CarImages, CCImages, FloorImages, GlobeImages, RobyImages, SecretImages, ShadowImages, SocketGameImages, TelegramImages, TetrisImages, ViewersImages } from '../../assets/projects/projectImages';
+import { ToolNameType } from '../About/About';
 import { Flex, Shift } from '../common/Helpers';
 import ProjectDetailedView from './ProjectDetailedView';
-import { ToolNameType, ToolType } from '../About/About';
-import { CarImages, CCImages, FloorImages, GlobeImages, RobyImages, SecretImages, ShadowImages, SocketGameImages, TelegramImages, TetrisImages, ViewersImages } from '../../assets/projects/projectImages';
-import PetsIcon from '@mui/icons-material/Pets';
 
 export type ProjectType = {
     title: string

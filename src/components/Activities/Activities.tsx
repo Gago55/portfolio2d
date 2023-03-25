@@ -1,8 +1,7 @@
-import React, { FC, useEffect, useState } from 'react'
-import { Tooltip, Sheet, List, ListItem, ListSubheader, ListDivider, ListItemButton, Typography, Divider, Link, IconButton } from "@mui/joy";
+import LaunchIcon from '@mui/icons-material/Launch';
+import { Divider, Link, List, ListDivider, ListItem, ListItemButton, ListSubheader, Sheet, Tooltip, Typography } from "@mui/joy";
+import { FC, useEffect, useState } from 'react';
 import { Flex, Shift } from '../common/Helpers';
-import LaunchIcon from '@mui/icons-material/Launch'
-import Box from '@mui/material/Box';
 
 interface IProps {
     selectedActivityId: number
@@ -21,16 +20,6 @@ type ActivityType = {
     isStudy: boolean
     link?: string
 }
-
-// const CustomWidthTooltip = styled(({ className, ...props }: TooltipProps) => (
-//     <Tooltip {...props} classes={{ popper: className }} />
-//   ))({
-//     [`& .${tooltipClasses.tooltip}`]: {
-//       maxWidth: 500,
-//     },
-//   })
-
-
 
 const Activities: FC<IProps> = props => {
 
@@ -98,7 +87,6 @@ const Activities: FC<IProps> = props => {
             <Sheet variant="soft">
                 <List
                     variant="outlined"
-                    // size={small ? 'sm' : undefined}
                     sx={{
                         width: 300,
                         bgcolor: 'background.body',
@@ -151,7 +139,7 @@ const Activities: FC<IProps> = props => {
                         />}
                 </Flex>
                 <Divider sx={{ m: 1 }} />
-                <Typography>{selectedActivity.description}</Typography>
+                <Typography component='span'>{selectedActivity.description}</Typography>
             </Flex>
         </Flex>
     )

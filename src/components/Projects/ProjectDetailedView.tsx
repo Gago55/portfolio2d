@@ -1,11 +1,11 @@
-import { AspectRatio, Avatar, Box, Button, Card, CardOverflow, Chip, Divider, Modal, ModalClose, ModalDialog, Sheet, Typography } from '@mui/joy'
-import React, { FC } from 'react'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import { AspectRatio, Avatar, Box, Button, Chip, Divider, Modal, ModalClose, ModalDialog, Sheet, Typography } from '@mui/joy'
+import { FC } from 'react'
 import { tools } from '../About/About'
 import Carousel from '../common/Carousel'
 import { Flex, Shift } from '../common/Helpers'
 import OutlinedDiv from '../common/OutlinedDiv'
 import { ProjectType } from './Projects'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 interface IProps {
     project: ProjectType

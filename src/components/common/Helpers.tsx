@@ -1,7 +1,7 @@
+import Sheet, { SheetProps } from '@mui/joy/Sheet';
+import { Box, SxProps } from '@mui/material';
+import { OptionsObject, SnackbarKey, SnackbarMessage, VariantType } from "notistack";
 import { ReactNode } from "react";
-import Sheet, { SheetProps } from '@mui/joy/Sheet'
-import { Box, BoxProps, SxProps } from '@mui/material'
-import { OptionsObject, SnackbarKey, SnackbarMessage, VariantType } from "notistack"
 
 export const Shift = () => <Box sx={{ flexGrow: 1 }} />
 
