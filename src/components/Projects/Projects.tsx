@@ -36,7 +36,7 @@ const Projects: FC<IProps> = props => {
             date: "2021 - present", isPet: false,
             preview: CCImages.preview,
             images: CCImages.images,
-            tools: ['Javascript', 'Typescript', 'React', 'ThreeJS', 'MUI', 'php', 'MySQL'],
+            tools: ['Javascript', 'Typescript', 'React', 'Redux', 'ThreeJS', 'MUI', 'php', 'MySQL'],
             url: 'https://www.garagecabinets.com/g/cc1/', extraUrls: [],
             description: <Typography>
                 &emsp;Cabinet Configurator is the main project I'm working on in  <Link onClick={() => {
@@ -52,7 +52,7 @@ const Projects: FC<IProps> = props => {
             title: 'Shadow Decor', preview: ShadowImages.preview, date: "2019-2020", isPet: false,
             images: ShadowImages.images,
             imagesRatio: 1.7,
-            tools: ['Javascript', 'React', 'ThreeJS', 'MUI', 'ExpressJS', 'MongoDB'],
+            tools: ['Javascript', 'React', 'Redux', 'ThreeJS', 'MUI', 'ExpressJS', 'MongoDB'],
             url: 'https://shadowdecor.com/editor/', extraUrls: [],
             description: <Typography>
                 &emsp;Shadow Decor is a project created by me and  <Link onClick={() => window.open('https://es.linkedin.com/in/manvel-arzumanyan-18623b5a', '_blank')}>my partner</Link>. We worked on it for a year and a half. Development of app fully done by myself.<br />
@@ -66,7 +66,7 @@ const Projects: FC<IProps> = props => {
         {
             title: 'Secret Contract Verifier', preview: SecretImages.preview, date: "2021", isPet: false,
             images: SecretImages.images,
-            tools: ['Javascript', 'Typescript', 'React', 'MUI', 'ExpressJS', 'MongoDB', 'Docker'],
+            tools: ['Javascript', 'Typescript', 'React', 'Redux', 'MUI', 'ExpressJS', 'MongoDB', 'Docker'],
             url: 'http://secret-contracts.com',
             extraUrls: [{ title: 'Source', url: 'https://github.com/Gago55/Secret-Contract-Verifier' }],
             description: <Typography>
@@ -82,7 +82,7 @@ const Projects: FC<IProps> = props => {
             date: '2022-present',
             preview: GlobeImages.preview,
             images: GlobeImages.images,
-            tools: ['Javascript', 'Typescript', 'React', 'ThreeJS', 'MUI'],
+            tools: ['Javascript', 'Typescript', 'React', 'Redux', 'ThreeJS', 'MUI'],
             url: 'http://51.254.113.253/g/gc_/',
             extraUrls: [
             ],
@@ -96,7 +96,7 @@ const Projects: FC<IProps> = props => {
         {
             title: 'Car Forest', preview: CarImages.preview, date: "2020", isPet: false,
             images: CarImages.images,
-            tools: ['Javascript', 'React', 'ThreeJS', 'MUI'],
+            tools: ['Javascript', 'React', 'Redux', 'ThreeJS', 'MUI'],
             url: 'http://51.254.113.253/g/car/',
             extraUrls: [],
             description: <Typography>
@@ -139,7 +139,7 @@ const Projects: FC<IProps> = props => {
         }, {
             title: 'Floor Planner', preview: FloorImages.preview, date: "2022", isPet: false,
             images: FloorImages.images,
-            tools: ['Javascript', 'Typescript', 'React', 'ThreeJS', 'MUI'],
+            tools: ['Javascript', 'Typescript', 'React', 'Redux', 'ThreeJS', 'MUI'],
             url: 'http://3.145.161.236/g/fc/',
             extraUrls: [],
             description: <Typography>

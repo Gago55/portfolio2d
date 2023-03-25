@@ -1,23 +1,20 @@
-import React, { FC } from 'react'
-import { Avatar, Box, Chip, Divider, IconButton, RadioGroup, Sheet, Tooltip, Typography } from "@mui/joy"
-import { Flex } from '../common/Helpers'
-import JSSrc from "../../assets/toolIcons/js.png"
-import TSSrc from "../../assets/toolIcons/ts.png"
-import ThreeJSSrc from "../../assets/toolIcons/threeJS.png"
-import ReactSrc from "../../assets/toolIcons/react.png"
-import MuiSrc from "../../assets/toolIcons/mui.png"
-import NodeSrc from "../../assets/toolIcons/node.png"
-import MongoSrc from "../../assets/toolIcons/mongo.png"
-import PhpSrc from "../../assets/toolIcons/php.png"
-import SqlSrc from "../../assets/toolIcons/sql.png"
-import TelegramSrc from "../../assets/toolIcons/telegram.jpg"
-import DockerSrc from "../../assets/toolIcons/docker.png"
-import CSharpSrc from "../../assets/toolIcons/cSharp.png"
-import UnitySrc from "../../assets/toolIcons/unity.png"
-import VueSrc from "../../assets/toolIcons/vue.png"
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail'
 import EmailIcon from '@mui/icons-material/Email'
 import GitHubIcon from '@mui/icons-material/GitHub'
+import { Avatar, Chip, Divider, IconButton, Tooltip, Typography } from "@mui/joy"
+import { FC } from 'react'
+import CSharpSrc from "../../assets/toolIcons/cSharp.png"
+import DockerSrc from "../../assets/toolIcons/docker.png"
+import JSSrc from "../../assets/toolIcons/js.png"
+import MongoSrc from "../../assets/toolIcons/mongo.png"
+import MuiSrc from "../../assets/toolIcons/mui.png"
+import ReactSrc from "../../assets/toolIcons/react.png"
+import ReduxSrc from "../../assets/toolIcons/redux.png"
+import TelegramSrc from "../../assets/toolIcons/telegram.jpg"
+import ThreeJSSrc from "../../assets/toolIcons/threeJS.png"
+import TSSrc from "../../assets/toolIcons/ts.png"
+import UnitySrc from "../../assets/toolIcons/unity.png"
+import VueSrc from "../../assets/toolIcons/vue.png"
+import { Flex } from '../common/Helpers'
 import OutlinedDiv from '../common/OutlinedDiv'
 
 interface IProps {
@@ -30,12 +27,13 @@ export type ToolType = {
     isMain: boolean
 }
 
-export type ToolNameType = 'Javascript' | 'ThreeJS' | 'React' | 'Typescript' | 'MUI' | 'MongoDB' | 'NodeJS' | 'ExpressJS' | 'php' | 'MySQL' | 'C#' | 'Unity3D' | 'Telegram Bots' | 'Docker' | 'WebSockets' | 'VueJS'
+export type ToolNameType = 'Javascript' | 'ThreeJS' | 'React' | 'Redux' | 'Typescript' | 'MUI' | 'MongoDB' | 'NodeJS' | 'ExpressJS' | 'php' | 'MySQL' | 'C#' | 'Unity3D' | 'Telegram Bots' | 'Docker' | 'WebSockets' | 'VueJS'
 
 export const tools: ToolType[] = [
     { name: 'Javascript', isMain: true, src: JSSrc },
     { name: 'ThreeJS', isMain: true, src: ThreeJSSrc },
     { name: 'React', isMain: true, src: ReactSrc },
+    { name: 'Redux', isMain: true, src: ReduxSrc },
     { name: 'Typescript', isMain: true, src: TSSrc },
     { name: 'MUI', isMain: true, src: MuiSrc },
     { name: 'MongoDB', isMain: true, src: MongoSrc },
@@ -70,10 +68,10 @@ const About: FC<IProps> = props => {
                 </Typography>
                 <Flex box sx={{ justifyContent: 'space-evenly', mt: 2 }}>
                     <OutlinedDiv label='Main' labelPlacement='center' style={{ height: 'fit-content', width: "45%" }}>
-                        {tools.filter(t => t.isMain).map(t => <Chip onClick={() => { }} variant='soft' color='neutral' startDecorator={t.src ? <Avatar size="sm" src={t.src} /> : undefined}>{t.name}</Chip>)}
+                        {tools.filter(t => t.isMain).map(t => <Chip key={t.name} onClick={() => { }} variant='soft' color='neutral' startDecorator={t.src ? <Avatar size="sm" src={t.src} /> : undefined}>{t.name}</Chip>)}
                     </OutlinedDiv>
                     <OutlinedDiv label='Other' labelPlacement='center' style={{ height: 'fit-content', width: "45%" }}>
-                        {tools.filter(t => !t.isMain).map(t => <Chip onClick={() => { }} variant='soft' color='neutral' startDecorator={t.src ? <Avatar size="sm" src={t.src} /> : undefined}>{t.name}</Chip>)}
+                        {tools.filter(t => !t.isMain).map(t => <Chip key={t.name} onClick={() => { }} variant='soft' color='neutral' startDecorator={t.src ? <Avatar size="sm" src={t.src} /> : undefined}>{t.name}</Chip>)}
                     </OutlinedDiv>
                 </Flex>
                 {/* <Divider sx={{ my: 2 }} /> */}
