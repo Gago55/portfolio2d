@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, ReactNode } from 'react'
+import React, { FC, useState, useEffect, useRef, ReactNode } from 'react'
 import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography } from "@mui/joy";
 import { Flex, Shift } from '../common/Helpers';
 import ProjectDetailedView from './ProjectDetailedView';
@@ -202,7 +202,50 @@ const Projects: FC<IProps> = props => {
         }
     ]
 
+    const cardWidth = 250
+    const threeCardRowMinWidth = cardWidth * 3 + (3 - 1) * 5 * 8 + 5 + 1 //3 is count of cards, 5 is gap, 8 is pixels per gap value, 5 is scrollbar width
+    const twoCardRowMinWidth = cardWidth * 2 + (2 - 1) * 5 * 8 + 5 + 1 //2 is count of cards, 5 is gap, 8 is pixels per gap value, 5 is scrollbar width
+
+    const [, forceRerender] = useState([])
     const [selectedProject, setSelectedProject] = useState(props.selectedProjectId !== undefined ? projects[props.selectedProjectId] : undefined)
+
+    const rootRef = useRef<HTMLDivElement>(null)
+    const emptyCardCountRef = useRef(0)
+
+    useEffect(() => {
+        const calculateNeededEmptyCardCount = () => {
+            if (rootRef.current) {
+                const width = rootRef.current.clientWidth
+
+                if (width > threeCardRowMinWidth) {
+                    if (projects.length % 3 !== 0) {
+                        const needEmptyCount = 3 - projects.length % 3
+                        if (emptyCardCountRef.current !== needEmptyCount) {
+                            emptyCardCountRef.current = needEmptyCount
+                            forceRerender([])
+                        }
+                    }
+                }
+                else if (width > twoCardRowMinWidth) {
+                    if (projects.length % 2 !== 0) {
+                        if (emptyCardCountRef.current !== 1) {
+                            emptyCardCountRef.current = 1
+                            forceRerender([])
+                        }
+                    }
+                }
+                else {
+                    if (emptyCardCountRef.current !== 0) {
+                        emptyCardCountRef.current = 0
+                        forceRerender([])
+                    }
+                }
+
+            }
+        }
+        window.addEventListener('resize', calculateNeededEmptyCardCount)
+        calculateNeededEmptyCardCount()
+    }, [])
 
     useEffect(() => {
         const projectBoxes = document.getElementsByClassName('project')
@@ -228,17 +271,9 @@ const Projects: FC<IProps> = props => {
     }, [props.selectedProjectId])
 
     return (
-        <Flex variant='soft' invertedColors className='tabWrapper'>
-            {/* <Flex column centerX sx={{
-                width: 1,
-                bgcolor: 'background.body',
-                borderRadius: 'sm',
-                boxShadow: 'sm',
-                p: 5
-            }}> */}
+        <Sheet ref={rootRef} variant='soft' invertedColors className='tabWrapper'>
             <Flex box sx={{
                 display: 'flex',
-                // gridTemplateColumns: 'auto auto auto',
                 flexWrap: 'wrap',
                 justifyContent: 'space-evenly',
                 overflowY: 'auto',
@@ -247,10 +282,10 @@ const Projects: FC<IProps> = props => {
                 mt: 1
 
             }}>
-
                 {projects.map((p, i) =>
                     <Box id={p === selectedProject ? 'selectedProjectBox' : ''} key={p.title} className='project'
                         sx={{
+                            width: cardWidth,
                             opacity: 1,
                             perspective: '1000px',
                             transition: 'all 0.4s',
@@ -264,7 +299,7 @@ const Projects: FC<IProps> = props => {
                             },
                         }}
                     >
-                        <Card variant='soft' sx={{ width: 220 }} onClick={() => {
+                        <Card variant='soft' sx={{}} onClick={() => {
                             props.setSelectedProjectId(i)
                         }}>
                             <CardOverflow>
@@ -298,11 +333,6 @@ const Projects: FC<IProps> = props => {
                                     bgcolor: 'background.level1',
                                 }}
                             >
-
-                                {/* <Divider orientation="vertical" /> */}
-                                {/* <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
-                                    {p.isPet ? "Pet Project" : ''}
-                                </Typography> */}
                                 <Shift />
                                 <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
                                     {p.date}
@@ -311,10 +341,10 @@ const Projects: FC<IProps> = props => {
                         </Card>
                     </Box>
                 )}
-                {/* </Flex> */}
+                {Array(emptyCardCountRef.current).fill('').map((e, i) => <Box key={i} sx={{ width: cardWidth }}></Box>)}
             </Flex>
             {selectedProject && <ProjectDetailedView project={selectedProject} close={() => { props.setSelectedProjectId(undefined) }} />}
-        </Flex>
+        </Sheet>
     )
 }
 
