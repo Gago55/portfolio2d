@@ -1,6 +1,6 @@
 import EmailIcon from '@mui/icons-material/Email'
 import GitHubIcon from '@mui/icons-material/GitHub'
-import { Avatar, Chip, Divider, IconButton, Tooltip, Typography } from "@mui/joy"
+import { Avatar, Chip, Divider, IconButton, Tooltip, Typography, useColorScheme } from "@mui/joy"
 import { FC } from 'react'
 import CSharpSrc from "../../assets/toolIcons/cSharp.png"
 import DockerSrc from "../../assets/toolIcons/docker.png"
@@ -50,6 +50,9 @@ export const tools: ToolType[] = [
 ]
 
 const About: FC<IProps> = props => {
+
+    const { mode } = useColorScheme()
+
     return (
         <Flex variant="soft" className='tabWrapper' column centerX>
             <Flex column centerX sx={{
@@ -67,10 +70,10 @@ const About: FC<IProps> = props => {
                     You can see languages and tools down below that I managed to use in my career
                 </Typography>
                 <Flex box sx={{ justifyContent: 'space-evenly', mt: 2 }}>
-                    <OutlinedDiv label='Main' labelPlacement='center' style={{ height: 'fit-content', width: "45%" }}>
+                    <OutlinedDiv label='Main' labelPlacement='center' borderColor={mode === 'light' ? '#dcdce1' : undefined} style={{ height: 'fit-content', width: "45%" }}>
                         {tools.filter(t => t.isMain).map(t => <Chip key={t.name} onClick={() => { }} variant='soft' color='neutral' startDecorator={t.src ? <Avatar size="sm" src={t.src} /> : undefined}>{t.name}</Chip>)}
                     </OutlinedDiv>
-                    <OutlinedDiv label='Other' labelPlacement='center' style={{ height: 'fit-content', width: "45%" }}>
+                    <OutlinedDiv label='Other' labelPlacement='center' borderColor={mode === 'light' ? '#dcdce1' : undefined} style={{ height: 'fit-content', width: "45%" }}>
                         {tools.filter(t => !t.isMain).map(t => <Chip key={t.name} onClick={() => { }} variant='soft' color='neutral' startDecorator={t.src ? <Avatar size="sm" src={t.src} /> : undefined}>{t.name}</Chip>)}
                     </OutlinedDiv>
                 </Flex>

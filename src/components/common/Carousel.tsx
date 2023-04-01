@@ -89,6 +89,7 @@ interface IProps {
     images: string[]
     width: number | string
     ratio: number
+    darkMode?: boolean
 }
 
 const Carousel: FC<IProps> = props => {
@@ -143,7 +144,7 @@ const Carousel: FC<IProps> = props => {
                                 cursor: 'pointer',
                                 border: '2px solid #ffffff00',
                                 "&:hover": {
-                                    border: '2px solid white'
+                                    border: '2px solid ' + (props.darkMode ? 'white' : '#d2d2da')
                                 }
                             }}
                         >

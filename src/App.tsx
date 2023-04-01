@@ -1,24 +1,47 @@
-import { Tabs } from "@mui/joy";
+import { Tabs, useColorScheme } from "@mui/joy";
 import Tab, { tabClasses } from "@mui/joy/Tab";
 import TabList from "@mui/joy/TabList";
 import TabPanel from "@mui/joy/TabPanel";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import About from "./components/About/About";
 import Activities from "./components/Activities/Activities";
 import { Flex } from "./components/common/Helpers";
 import Projects from "./components/Projects/Projects";
+import Settings from "./components/Settings/Settings";
 
 interface IProps {
 }
 
+
+
 const App: FC<IProps> = (props) => {
+
+  const { mode, setMode } = useColorScheme()
+
+  const [isSettingOpen, setIsSettingOpen] = useState(true)
 
   const [tabId, setTabId] = useState(1)
   const [selectedActivityId, setSelectedActivityId] = useState(0)
   const [selectedProjectId, setSelectedProjectId] = useState<undefined | number>(undefined)
 
+  const toggleMode = (e: KeyboardEvent) => {
+    if (e.key === 'm') {
+      const mode = localStorage.getItem('joy-mode') || 'dark'
+
+      setMode(mode === 'dark' ? 'light' : 'dark')
+    }
+  }
+  useEffect(() => {
+    window.removeEventListener('keypress', toggleMode)
+    window.addEventListener('keypress', toggleMode)
+
+  }, [])
+
+  // window.removeEventListener('keypress', toggleMode)
+
 
   return <Flex centerX variant="soft" sx={{ height: "100%" }}   >
+    <Settings />
     <Tabs value={tabId} sx={{ width: .5, mt: 5 }} variant="soft">
       <TabList
         variant="plain"

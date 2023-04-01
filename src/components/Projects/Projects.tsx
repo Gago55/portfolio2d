@@ -1,5 +1,5 @@
 import PetsIcon from '@mui/icons-material/Pets';
-import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography } from "@mui/joy";
+import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography, useColorScheme } from "@mui/joy";
 import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import { CarImages, CCImages, FloorImages, GlobeImages, RobyImages, SecretImages, ShadowImages, SocketGameImages, TelegramImages, TetrisImages, ViewersImages } from '../../assets/projects/projectImages';
 import { ToolNameType } from '../About/About';
@@ -212,6 +212,8 @@ const Projects: FC<IProps> = props => {
     const rootRef = useRef<HTMLDivElement>(null)
     const emptyCardCountRef = useRef(0)
 
+    const { mode } = useColorScheme()
+
     useEffect(() => {
         const calculateNeededEmptyCardCount = () => {
             if (rootRef.current) {
@@ -271,16 +273,22 @@ const Projects: FC<IProps> = props => {
     }, [props.selectedProjectId])
 
     return (
-        <Sheet ref={rootRef} variant='soft' invertedColors className='tabWrapper'>
+        <Sheet ref={rootRef} className='tabWrapper'
+            variant={mode === 'dark' ? 'soft' : undefined}
+            invertedColors={mode === 'dark'}
+            sx={{
+                bgcolor: mode === 'light' ? 'background.level2' : undefined,
+            }}
+        >
             <Flex box sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 justifyContent: 'space-evenly',
                 overflowY: 'auto',
-                maxHeight: window.innerHeight - 100,
+                maxHeight: window.innerHeight - 120,
                 gap: 5,
-                mt: 1
-
+                mt: 1,
+                pt: 1,
             }}>
                 {projects.map((p, i) =>
                     <Box id={p === selectedProject ? 'selectedProjectBox' : ''} key={p.title} className='project'
@@ -299,9 +307,11 @@ const Projects: FC<IProps> = props => {
                             },
                         }}
                     >
-                        <Card variant='soft' sx={{}} onClick={() => {
-                            props.setSelectedProjectId(i)
-                        }}>
+                        <Card variant={mode === 'dark' ? 'soft' : 'outlined'}
+                            // color={mode === 'light' ? 'primary' : undefined}
+                            onClick={() => {
+                                props.setSelectedProjectId(i)
+                            }}>
                             <CardOverflow>
                                 <AspectRatio ratio="2">
                                     <img
@@ -311,18 +321,25 @@ const Projects: FC<IProps> = props => {
                                     />
                                 </AspectRatio>
                             </CardOverflow>
+                            <Divider />
 
-                            <CardOverflow sx={{ display: 'flex', alignItems: 'center' }}>
-                                <Typography level="h2" sx={{ fontSize: 'md', my: 2 }}>
+                            <CardOverflow sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                bgcolor: mode === 'light' ? 'white' : undefined,
+                                borderRadius: 0
+                            }}>
+                                <Typography level="h2" sx={{ fontSize: 'md', my: 2 }} >
                                     {p.title}
                                 </Typography>
                                 <Shift />
-                                {p.isPet && <PetsIcon />}
+                                {p.isPet && <PetsIcon sx={{ color: mode === 'light' ? '#7c7c7c' : undefined, }} />}
                             </CardOverflow>
                             {/* <Typography level="body2" sx={{ mt: 0.5, mb: 2 }}>
                                 California
                             </Typography> */}
                             <Divider />
+
                             <CardOverflow
                                 variant="soft"
                                 sx={{
@@ -330,7 +347,7 @@ const Projects: FC<IProps> = props => {
                                     gap: 1.5,
                                     py: 1.5,
                                     px: 'var(--Card-padding)',
-                                    bgcolor: 'background.level1',
+                                    bgcolor: mode === 'light' ? '#f7f7f8' : 'background.level1',
                                 }}
                             >
                                 <Shift />
@@ -338,13 +355,14 @@ const Projects: FC<IProps> = props => {
                                     {p.date}
                                 </Typography>
                             </CardOverflow>
+
                         </Card>
                     </Box>
                 )}
                 {Array(emptyCardCountRef.current).fill('').map((e, i) => <Box key={i} sx={{ width: cardWidth }}></Box>)}
             </Flex>
             {selectedProject && <ProjectDetailedView project={selectedProject} close={() => { props.setSelectedProjectId(undefined) }} />}
-        </Sheet>
+        </Sheet >
     )
 }
 
