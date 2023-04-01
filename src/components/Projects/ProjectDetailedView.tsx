@@ -1,11 +1,12 @@
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import { AspectRatio, Avatar, Box, Button, Chip, Divider, Modal, ModalClose, ModalDialog, Sheet, Typography, useColorScheme } from '@mui/joy'
+import { AspectRatio, Avatar, Box, Button, Chip, Divider, Modal, ModalClose, ModalDialog, Sheet, Typography, useColorScheme, useTheme } from '@mui/joy'
 import { FC } from 'react'
 import { tools } from '../About/About'
 import Carousel from '../common/Carousel'
 import { Flex, Shift } from '../common/Helpers'
 import OutlinedDiv from '../common/OutlinedDiv'
 import { ProjectType } from './Projects'
+import { useMediaQuery } from '@mui/material'
 
 interface IProps {
     project: ProjectType
@@ -15,18 +16,18 @@ interface IProps {
 const ProjectDetailedView: FC<IProps> = ({ project, ...props }) => {
 
     const { mode } = useColorScheme()
+    const theme = useTheme()
+    const isDownXL = useMediaQuery(theme.breakpoints.down('xl'))
 
     return (
         <Modal open onClose={props.close} >
             <ModalDialog
                 sx={{
-                    width: 1000,
                     bgcolor: mode === 'light' ? 'background.level1' : undefined,
+                    maxWidth: .9,
                 }}
                 aria-labelledby="layout-modal-title"
                 aria-describedby="layout-modal-description"
-            // variant='solid'
-            // layout={true || undefined}
             >
                 <ModalClose />
                 <Typography id="layout-modal-title" component="h2">  {project.title}
@@ -36,10 +37,17 @@ const ProjectDetailedView: FC<IProps> = ({ project, ...props }) => {
                 </Typography>
                 <Divider sx={{ mb: 2 }} />
 
-                <Flex box sx={{ gap: 1 }}>
+                <Flex box
+                    sx={{
+                        gap: 1,
+                        flexWrap: isDownXL ? 'wrap' : 'nowrap',
+                        maxHeight: window.innerHeight * .9 - 100,
+                        overflowY: 'auto',
+                    }}>
                     <Sheet
                         sx={{
-                            width: 400,
+                            flex: isDownXL ? '1' : undefined,
+                            width: !isDownXL ? 400 : undefined,
                             bgcolor: mode === 'light' ? 'background.level1' : undefined,
                         }}
                         invertedColors={mode === 'dark'}
@@ -51,9 +59,6 @@ const ProjectDetailedView: FC<IProps> = ({ project, ...props }) => {
                             />
                         </AspectRatio>
                         <Flex box>
-                            {/* <Typography level="body1" sx={{ color: 'text.secondary' }}>
-                                {project.isPet ? "Pet Project" : ''}
-                            </Typography> */}
                             <Shift />
                             <Typography level="body1" sx={{ color: 'text.secondary' }}>
                                 {project.date}
@@ -63,13 +68,23 @@ const ProjectDetailedView: FC<IProps> = ({ project, ...props }) => {
                             {tools.filter(t => project.tools.includes(t.name)).map(t => <Chip key={t.name} onClick={() => { }} variant='soft' color='neutral' startDecorator={t.src ? <Avatar size="sm" src={t.src} /> : undefined}>{t.name}</Chip>)}
                         </OutlinedDiv>
                     </Sheet>
-                    <Divider orientation='vertical' />
-                    <Flex column centerX box sx={{ color: 'white', width: 600 }}>
+                    <Divider orientation={isDownXL ? 'horizontal' : 'vertical'}
+                        sx={{
+                            my: isDownXL ? 1 : undefined,
+                            width: isDownXL ? 1 : undefined
+                        }} />
+                    <Flex column centerX box
+                        sx={{
+                            color: 'white',
+                            maxWidth: isDownXL ? 1 : undefined,
+                            flex: isDownXL ? '1' : undefined,
+                            width: !isDownXL ? 600 : undefined
+                        }}>
                         {project.description}
                         <Shift />
                         <Box mt={2}></Box>
                         <Carousel
-                            width={'80%'}
+                            width={isDownXL ? '100%' : '80%'}
                             images={project.images}
                             ratio={project.imagesRatio || 1.77}
                             darkMode={mode === 'dark'}
@@ -79,7 +94,7 @@ const ProjectDetailedView: FC<IProps> = ({ project, ...props }) => {
                 {(project.url || project.extraUrls.length) && <>
                     <Divider sx={{ my: 2 }} />
 
-                    <Flex box sx={{ gap: 1 }}>
+                    <Flex box sx={{ gap: 1, overflowX: 'auto' }}>
                         <Shift />
                         {project.extraUrls.map(u => <Button key={u.title} color='neutral' variant='soft' endDecorator={<OpenInNewIcon />}
                             onClick={() => window.open(u.url, '_blank')}>{u.title}</Button>)}

@@ -18,9 +18,7 @@ const App: FC<IProps> = (props) => {
 
   const { mode, setMode } = useColorScheme()
 
-  const [isSettingOpen, setIsSettingOpen] = useState(true)
-
-  const [tabId, setTabId] = useState(1)
+  const [tabId, setTabId] = useState(2)
   const [selectedActivityId, setSelectedActivityId] = useState(0)
   const [selectedProjectId, setSelectedProjectId] = useState<undefined | number>(undefined)
 
@@ -42,7 +40,15 @@ const App: FC<IProps> = (props) => {
 
   return <Flex centerX variant="soft" sx={{ height: "100%" }}   >
     <Settings />
-    <Tabs value={tabId} sx={{ width: .5, mt: 5 }} variant="soft">
+    <Tabs value={tabId} variant="soft"
+      sx={theme => ({
+        width: .5,
+        [theme.breakpoints.down("lg")]: {
+          width: .9
+        },
+        mt: 5
+      })}
+    >
       <TabList
         variant="plain"
         sx={{

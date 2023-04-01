@@ -42,7 +42,7 @@ const Activities: FC<IProps> = props => {
         },
         {
             id: 2, title: 'NPUA', date: '2017 - 2021', detailedTitle: 'National Polytechnic University of Armenia', isStudy: true, link: 'https://polytech.am/en/home/',
-            description: <Typography>Bachelor of Science, Cyber Security, National Polytechnic University of Armenia, 2021</Typography>
+            description: <Typography>&emsp;Bachelor of Science, Cyber Security, National Polytechnic University of Armenia, 2021</Typography>
         },
         {
             id: 3, title: 'Freelancing', date: '2017 - present', detailedTitle: 'Freelancing', isStudy: false,
@@ -83,12 +83,15 @@ const Activities: FC<IProps> = props => {
     }, [props.selectedActivityId])
 
     return (
-        <Flex box className='tabWrapper' centerX sx={{ width: 1, justifyContent: 'space-between', gap: 1 }}>
-            <Sheet variant="soft">
+        <Flex box className='tabWrapper' centerX sx={{ gap: 1, flexWrap: 'wrap' }}>
+            <Sheet variant="soft" sx={{
+                flex: '1',
+                minWidth: 300
+            }}>
                 <List
                     variant="outlined"
                     sx={{
-                        width: 300,
+                        // width: 300,S
                         bgcolor: 'background.body',
                         borderRadius: 'sm',
                         boxShadow: 'sm',
@@ -123,15 +126,17 @@ const Activities: FC<IProps> = props => {
             </Sheet>
 
             <Flex centerX column sx={{
-                width: 1,
+                // width: 1,
                 bgcolor: 'background.body',
                 borderRadius: 'sm',
                 boxShadow: 'sm',
                 p: 1,
-                height: 'fit-content'
+                height: 'fit-content',
+                flex: '2',
+                minWidth: 300,
             }}>
                 <Flex box centerY centerX sx={{ position: 'relative' }} fullWidth>
-                    <Typography level='h4' >{selectedActivity.detailedTitle}</Typography>
+                    <Typography level='h4' sx={{ mx: 3, textAlign: 'center' }}>{selectedActivity.detailedTitle}</Typography>
                     {selectedActivity.link &&
                         <LaunchIcon
                             sx={{ position: 'absolute', right: 10, cursor: 'pointer' }}
@@ -139,7 +144,7 @@ const Activities: FC<IProps> = props => {
                         />}
                 </Flex>
                 <Divider sx={{ m: 1 }} />
-                <Typography component='span'>{selectedActivity.description}</Typography>
+                <Typography component='span' sx={{ maxHeight: window.innerHeight - 520, overflowY: 'auto' }}>{selectedActivity.description}</Typography>
             </Flex>
         </Flex>
     )

@@ -17,7 +17,7 @@ const Settings: FC<IProps> = props => {
     const [open, setOpen] = useState(false)
 
     return (<>
-        {!open && <IconButton variant='outlined' color='neutral' sx={{ m: 2, position: 'absolute', top: 0, right: 0 }} onClick={() => { setOpen(true) }}>
+        {!open && <IconButton variant='outlined' color='neutral' sx={{ zIndex: 99, m: 2, position: 'absolute', top: 0, right: 0 }} onClick={() => { setOpen(true) }}>
             <SettingsIcon />
         </IconButton>
         }

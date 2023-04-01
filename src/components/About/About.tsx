@@ -1,6 +1,6 @@
 import EmailIcon from '@mui/icons-material/Email'
 import GitHubIcon from '@mui/icons-material/GitHub'
-import { Avatar, Chip, Divider, IconButton, Tooltip, Typography, useColorScheme } from "@mui/joy"
+import { Avatar, Chip, Divider, IconButton, Sheet, Tooltip, Typography, useColorScheme } from "@mui/joy"
 import { FC } from 'react'
 import CSharpSrc from "../../assets/toolIcons/cSharp.png"
 import DockerSrc from "../../assets/toolIcons/docker.png"
@@ -54,32 +54,50 @@ const About: FC<IProps> = props => {
     const { mode } = useColorScheme()
 
     return (
-        <Flex variant="soft" className='tabWrapper' column centerX>
-            <Flex column centerX sx={{
+        <Flex variant="soft" className='tabWrapper' column centerX sx={{
+        }}>
+            <Sheet sx={theme => ({
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
                 width: 1,
                 bgcolor: 'background.body',
                 borderRadius: 'sm',
                 boxShadow: 'sm',
-                p: 5
-            }}>
+                p: 5,
+                maxHeight: window.innerHeight - 170,
+                overflowY: 'auto',
+                [theme.breakpoints.down("xl")]: {
+                    textAlign: 'center',
+                    p: 2
+                },
+            })}>
                 <Typography level='h5'>
                     &emsp;Hey, my name is Gagik Khachatryan, I'm {Math.floor((new Date().getTime() - new Date("2000-04-24").getTime()) / 1000 / 3600 / 24 / 365)} years old. I'm full-stack web developer and BS of Cyber Security from Armenia. I start coding since 2014 and work as freelancer since 2017.
                 </Typography>
                 <Divider sx={{ my: 2 }} />
                 <Typography level='h5'>
-                    You can see languages and tools down below that I managed to use in my career
+                    &emsp;You can see languages and tools down below that I managed to use in my career
                 </Typography>
-                <Flex box sx={{ justifyContent: 'space-evenly', mt: 2 }}>
-                    <OutlinedDiv label='Main' labelPlacement='center' borderColor={mode === 'light' ? '#dcdce1' : undefined} style={{ height: 'fit-content', width: "45%" }}>
+                <Flex box sx={{ justifyContent: 'space-evenly', mt: 2, flexWrap: 'wrap' }}>
+                    <OutlinedDiv label='Main' labelPlacement='center' borderColor={mode === 'light' ? '#dcdce1' : undefined}
+                        style={{
+                            height: 'fit-content',
+                            flex: '1 0 230px'
+                        }}>
                         {tools.filter(t => t.isMain).map(t => <Chip key={t.name} onClick={() => { }} variant='soft' color='neutral' startDecorator={t.src ? <Avatar size="sm" src={t.src} /> : undefined}>{t.name}</Chip>)}
                     </OutlinedDiv>
-                    <OutlinedDiv label='Other' labelPlacement='center' borderColor={mode === 'light' ? '#dcdce1' : undefined} style={{ height: 'fit-content', width: "45%" }}>
+                    <OutlinedDiv label='Other' labelPlacement='center' borderColor={mode === 'light' ? '#dcdce1' : undefined}
+                        style={{
+                            height: 'fit-content',
+                            flex: '1 0 230px'
+                        }}>
                         {tools.filter(t => !t.isMain).map(t => <Chip key={t.name} onClick={() => { }} variant='soft' color='neutral' startDecorator={t.src ? <Avatar size="sm" src={t.src} /> : undefined}>{t.name}</Chip>)}
                     </OutlinedDiv>
                 </Flex>
                 {/* <Divider sx={{ my: 2 }} /> */}
 
-            </Flex>
+            </Sheet>
             <Flex box sx={{ gap: 1, justifyContent: 'center', mt: 2 }}>
                 <Tooltip title='xgagik8@gmail.com'>
                     <IconButton

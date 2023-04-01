@@ -139,12 +139,12 @@ const Carousel: FC<IProps> = props => {
                             onClick={() => { setSelectedImage(img) }}
                             key={img.id}
                             sx={{
-                                width: itemWidth,
-                                height: itemWidth / props.ratio,
+                                width: itemWidth + 4,
+                                height: itemWidth / props.ratio + 4,
                                 cursor: 'pointer',
                                 border: '2px solid #ffffff00',
                                 "&:hover": {
-                                    border: '2px solid ' + (props.darkMode ? 'white' : '#d2d2da')
+                                    border: '2px solid ' + (props.darkMode ? 'white' : 'black')
                                 }
                             }}
                         >
