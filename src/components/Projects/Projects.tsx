@@ -43,7 +43,7 @@ const Projects: FC<IProps> = props => {
                     props.setTabId(1)
                     props.setSelectedActivityId(4)
                 }}>Greenberg Casework Company</Link>. I've built it from scratch by myself.<br />
-                &emsp;Cabinet Configurator is web 3D tool to design custom cabinets. The tool is mostly for our company's designers. They design new cabinets and after it the new designs go to our  <Link onClick={() => window.open('https://www.garagecabinets.com', '_blank')}>online shop</Link> for sales.<br />
+                &emsp;Cabinet Configurator is web 3D tool to design custom cabinets. The tool is mostly for our company's designers. They design new cabinets and after it the new designs go to our  <Link onClick={() => window.open('https://www.garagecabinets.com', '_blank')}>online shop</Link> for sales (see last picture).<br />
                 &emsp;Unauthorized users can only play with configurator by building cabinets, but nothing more. Authorized users can save their cabinets, share them with another users. Depends user role, some users can see price generation per piece, see cabinet parts list, change cabinet part configurations (prices, price generation type, etc), see/change cabinet material list, see/change app configs (some properties for cabinet which users can't change in process of designing), see/change app users, etc.<br />
                 &emsp;Here is credentials for demo account, you can login with it to unlock part of functionality of application, the prices for that account are fake. <br /><br /><i> &emsp;Login: demo@demo.com <br /> &emsp;Password: demo1234</i>
             </Typography >

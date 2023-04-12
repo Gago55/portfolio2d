@@ -3,6 +3,17 @@ import CCPic1 from "./cc/pic1.png"
 import CCPic2 from "./cc/pic2.png"
 import CCPic3 from "./cc/pic3.png"
 import CCPic4 from "./cc/pic4.png"
+import CCPic5 from "./cc/pic5.png"
+import CCPic6 from "./cc/pic6.png"
+import CCPic7 from "./cc/pic7.png"
+import CCPic8 from "./cc/pic8.png"
+import CCPic9 from "./cc/pic9.png"
+import CCPic10 from "./cc/pic10.png"
+import CCPic11 from "./cc/pic11.png"
+import CCPic12 from "./cc/pic12.png"
+import CCPic13 from "./cc/pic13.png"
+import CCPic14 from "./cc/pic14.png"
+import CCPic15 from "./cc/pic15.png"
 
 import ShadowPreview from "./shadow/preview.png"
 import ShadowPic1 from "./shadow/Pic1.png"
@@ -98,7 +109,7 @@ import SocketGamePic4 from "./socketGame/pic4.png"
 
 export const CCImages = {
     preview: CCPreview,
-    images: [CCPic1, CCPic2, CCPic3, CCPic4]
+    images: [CCPreview, CCPic1, CCPic2, CCPic3, CCPic4, CCPic5, CCPic6, CCPic7, CCPic8, CCPic9, CCPic10, CCPic11, CCPic12, CCPic13, CCPic14, CCPic15]
 }
 
 export const ShadowImages = {
