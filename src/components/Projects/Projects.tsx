@@ -5,6 +5,7 @@ import { CarImages, CCImages, FloorImages, GlobeImages, RobyImages, SecretImages
 import { ToolNameType } from '../About/About';
 import { Flex, Shift } from '../common/Helpers';
 import ProjectDetailedView from './ProjectDetailedView';
+import ProjectCard from './ProjectCard';
 
 export type ProjectType = {
     title: string
@@ -291,73 +292,12 @@ const Projects: FC<IProps> = props => {
                 pt: 1,
             }}>
                 {projects.map((p, i) =>
-                    <Box id={p === selectedProject ? 'selectedProjectBox' : ''} key={p.title} className='project'
-                        sx={{
-                            width: cardWidth,
-                            opacity: 1,
-                            perspective: '1000px',
-                            transition: 'all 0.4s',
-                            '& > div': {
-                                transition: 'inherit',
-                            },
-                            '&:hover': {
-                                '& > div': {
-                                    transform: 'rotateY(30deg)',
-                                },
-                            },
-                        }}
-                    >
-                        <Card variant={mode === 'dark' ? 'soft' : 'outlined'}
-                            // color={mode === 'light' ? 'primary' : undefined}
-                            onClick={() => {
-                                props.setSelectedProjectId(i)
-                            }}>
-                            <CardOverflow>
-                                <AspectRatio ratio="2">
-                                    <img
-
-                                        src={p.preview}
-                                        alt=""
-                                    />
-                                </AspectRatio>
-                            </CardOverflow>
-                            <Divider />
-
-                            <CardOverflow sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                bgcolor: mode === 'light' ? 'white' : undefined,
-                                borderRadius: 0
-                            }}>
-                                <Typography level="h2" sx={{ fontSize: 'md', my: 2 }} >
-                                    {p.title}
-                                </Typography>
-                                <Shift />
-                                {p.isPet && <PetsIcon sx={{ color: mode === 'light' ? '#7c7c7c' : undefined, }} />}
-                            </CardOverflow>
-                            {/* <Typography level="body2" sx={{ mt: 0.5, mb: 2 }}>
-                                California
-                            </Typography> */}
-                            <Divider />
-
-                            <CardOverflow
-                                variant="soft"
-                                sx={{
-                                    display: 'flex',
-                                    gap: 1.5,
-                                    py: 1.5,
-                                    px: 'var(--Card-padding)',
-                                    bgcolor: mode === 'light' ? '#f7f7f8' : 'background.level1',
-                                }}
-                            >
-                                <Shift />
-                                <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
-                                    {p.date}
-                                </Typography>
-                            </CardOverflow>
-
-                        </Card>
-                    </Box>
+                    <ProjectCard
+                        id={i === props.selectedProjectId ? 'selectedProjectBox' : ''}
+                        key={i} project={p}
+                        cardWidth={cardWidth}
+                        select={() => { props.setSelectedProjectId(i) }}
+                    />
                 )}
                 {Array(emptyCardCountRef.current).fill('').map((e, i) => <Box key={i} sx={{ width: cardWidth }}></Box>)}
             </Flex>
