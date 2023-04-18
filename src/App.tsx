@@ -21,6 +21,7 @@ const App: FC<IProps> = (props) => {
   const [tabId, setTabId] = useState(2)
   const [selectedActivityId, setSelectedActivityId] = useState(0)
   const [selectedProjectId, setSelectedProjectId] = useState<undefined | number>(undefined)
+  const [isPreviewsLoaded, setIsPreviewsLoaded] = useState(false)
 
   const toggleMode = (e: KeyboardEvent) => {
     if (e.key === 'm') {
@@ -78,7 +79,9 @@ const App: FC<IProps> = (props) => {
       <TabPanel value={0}>
         <Projects
           setTabId={setTabId}
+          isPreviewsLoaded={isPreviewsLoaded}
           selectedProjectId={selectedProjectId}
+          setIsPreviewsLoaded={setIsPreviewsLoaded}
           setSelectedProjectId={setSelectedProjectId}
           setSelectedActivityId={setSelectedActivityId}
         />
