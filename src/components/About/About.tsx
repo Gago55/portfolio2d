@@ -55,6 +55,7 @@ const About: FC<IProps> = props => {
 
     return (
         <Flex variant="soft" className='tabWrapper' column centerX sx={{
+            background: "#00000000"
         }}>
             <Sheet sx={theme => ({
                 display: 'flex',

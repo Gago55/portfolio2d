@@ -14,6 +14,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import Three from "./components/Three/Three";
 
 const { unstable_sxConfig: muiSxConfig, ...muiTheme } = extendMuiTheme({
   // This is required to point to `var(--joy-*)` because we are using

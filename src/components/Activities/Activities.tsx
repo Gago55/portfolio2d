@@ -86,7 +86,8 @@ const Activities: FC<IProps> = props => {
         <Flex box className='tabWrapper' centerX sx={{ gap: 1, flexWrap: 'wrap' }}>
             <Sheet variant="soft" sx={{
                 flex: '1',
-                minWidth: 300
+                minWidth: 300,
+                background: "#00000000"
             }}>
                 <List
                     variant="outlined"
@@ -146,7 +147,7 @@ const Activities: FC<IProps> = props => {
                 <Divider sx={{ m: 1 }} />
                 <Typography component='span' sx={{ maxHeight: window.innerHeight - 520, overflowY: 'auto' }}>{selectedActivity.description}</Typography>
             </Flex>
-        </Flex>
+        </Flex >
     )
 }
 export default Activities

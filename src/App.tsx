@@ -8,17 +8,18 @@ import Activities from "./components/Activities/Activities";
 import { Flex } from "./components/common/Helpers";
 import Projects from "./components/Projects/Projects";
 import Settings from "./components/Settings/Settings";
+import Three from "./components/Three/Three";
+
 
 interface IProps {
 }
 
-
-
 const App: FC<IProps> = (props) => {
 
   const { mode, setMode } = useColorScheme()
+  const [isParticlesOn, setIsParticlesOn] = useState(true)
 
-  const [tabId, setTabId] = useState(2)
+  const [tabId, setTabId] = useState(0)
   const [selectedActivityId, setSelectedActivityId] = useState(0)
   const [selectedProjectId, setSelectedProjectId] = useState<undefined | number>(undefined)
   const [isPreviewsLoaded, setIsPreviewsLoaded] = useState(false)
@@ -33,21 +34,24 @@ const App: FC<IProps> = (props) => {
   useEffect(() => {
     window.removeEventListener('keypress', toggleMode)
     window.addEventListener('keypress', toggleMode)
-
   }, [])
 
+  useEffect(() => {
+    document.body.style.background = mode === 'dark' ? "#25252d" : "#ebebef"
+  }, [mode])
   // window.removeEventListener('keypress', toggleMode)
 
 
-  return <Flex centerX variant="soft" sx={{ height: "100%" }}   >
-    <Settings />
+  return <Flex centerX variant="soft" sx={{ height: "100%", background: "#00000000" }}   >
+    <Settings isParticlesOn={isParticlesOn} setIsParticlesOn={setIsParticlesOn} />
+    {isParticlesOn && <Three />}
     <Tabs value={tabId} variant="soft"
       sx={theme => ({
         width: .5,
         [theme.breakpoints.down("lg")]: {
           width: .9
         },
-        mt: 5
+        mt: 5, background: "#00000000"
       })}
     >
       <TabList
@@ -72,9 +76,9 @@ const App: FC<IProps> = (props) => {
           },
         }}
       >
-        <Tab variant="soft" onClick={() => setTabId(0)}>Projects</Tab>
-        <Tab variant="soft" onClick={() => setTabId(1)}>Activities</Tab>
-        <Tab variant="soft" onClick={() => setTabId(2)}>About</Tab>
+        <Tab sx={{ background: "#00000000" }} variant="soft" onClick={() => setTabId(0)}>Projects</Tab>
+        <Tab sx={{ background: "#00000000" }} variant="soft" onClick={() => setTabId(1)}>Activities</Tab>
+        <Tab sx={{ background: "#00000000" }} variant="soft" onClick={() => setTabId(2)}>About</Tab>
       </TabList>
       <TabPanel value={0}>
         <Projects

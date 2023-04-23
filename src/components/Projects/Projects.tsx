@@ -282,7 +282,8 @@ const Projects: FC<IProps> = props => {
             variant={mode === 'dark' ? 'soft' : undefined}
             invertedColors={mode === 'dark'}
             sx={{
-                bgcolor: mode === 'light' ? 'background.level2' : undefined,
+                background: "#00000000"
+                // bgcolor: mode === 'light' ? 'background.level2' : undefined,
             }}
         >
             <Flex box sx={{
@@ -313,6 +314,9 @@ const Projects: FC<IProps> = props => {
                         }}
                     >
                         <Card variant={mode === 'dark' ? 'soft' : 'outlined'}
+                            sx={{
+                                background: mode === 'dark' ? "#4d4d59" : undefined
+                            }}
                             // color={mode === 'light' ? 'primary' : undefined}
                             onClick={() => {
                                 props.setSelectedProjectId(i)
@@ -344,7 +348,7 @@ const Projects: FC<IProps> = props => {
                             <CardOverflow sx={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                bgcolor: mode === 'light' ? 'white' : undefined,
+                                bgcolor: mode === 'light' ? 'white' : '#3e3e49',
                                 borderRadius: 0
                             }}>
                                 <Typography level="h2" sx={{ fontSize: 'md', my: 2 }} >
@@ -365,7 +369,7 @@ const Projects: FC<IProps> = props => {
                                     gap: 1.5,
                                     py: 1.5,
                                     px: 'var(--Card-padding)',
-                                    bgcolor: mode === 'light' ? '#f7f7f8' : 'background.level1',
+                                    bgcolor: mode === 'light' ? '#f7f7f8' : '#4f4f5b',
                                 }}
                             >
                                 <Shift />
