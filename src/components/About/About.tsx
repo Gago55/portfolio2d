@@ -1,7 +1,7 @@
 import EmailIcon from '@mui/icons-material/Email'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import { Avatar, Chip, Divider, IconButton, Sheet, Tooltip, Typography, useColorScheme } from "@mui/joy"
-import { FC } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import CSharpSrc from "../../assets/toolIcons/cSharp.png"
 import DockerSrc from "../../assets/toolIcons/docker.png"
 import JSSrc from "../../assets/toolIcons/js.png"
@@ -18,7 +18,11 @@ import { Flex } from '../common/Helpers'
 import OutlinedDiv from '../common/OutlinedDiv'
 
 interface IProps {
+    isGlobeOn: boolean
+    isGlobeDisabled: boolean
 
+    setIsGlobeDisabled(v: boolean): void
+    setIsSettingsOpen(v: boolean): void
 }
 
 export type ToolType = {
@@ -52,10 +56,51 @@ export const tools: ToolType[] = [
 const About: FC<IProps> = props => {
 
     const { mode } = useColorScheme()
+    const globeMinHeight = 160
+    const globeContainer = useRef<null | HTMLDivElement>(null)
+    const isGlobeDisabled = useRef(props.isGlobeDisabled)
+
+    const [_, forceUpdate] = useState([])
+
+    useEffect(() => {
+        checkGlobeContainer(true)
+        window.addEventListener('resize', () => { checkGlobeContainer() })
+
+        forceUpdate([])
+    }, [])
+
+    useEffect(() => {
+        isGlobeDisabled.current = props.isGlobeDisabled
+    }, [props.isGlobeDisabled])
+
+    const checkGlobeContainer = (isFirstTime = false) => {
+        if (globeContainer.current) {
+            const elHeight = parseInt(getComputedStyle(globeContainer.current).height.slice(0, -2))
+            console.log(elHeight);
+
+            if (elHeight > globeMinHeight) {
+                if (isGlobeDisabled.current) {
+                    props.setIsGlobeDisabled(false)
+
+                    if (!isFirstTime)
+                        props.setIsSettingsOpen(true)
+                }
+            }
+            else {
+                if (!isGlobeDisabled.current) {
+                    props.setIsGlobeDisabled(true)
+                    if (!isFirstTime)
+                        props.setIsSettingsOpen(true)
+                }
+            }
+
+        }
+    }
 
     return (
         <Flex variant="soft" className='tabWrapper' column centerX sx={{
-            background: "#00000000"
+            background: "#00000000",
+            height: "100%"
         }}>
             <Sheet sx={theme => ({
                 display: 'flex',
@@ -113,6 +158,19 @@ const About: FC<IProps> = props => {
                     > <GitHubIcon fontSize={'large'} /> </IconButton>
                 </Tooltip>
             </Flex>
+            <div ref={globeContainer} style={{ flexGrow: 1, width: '100%', minHeight: globeMinHeight }}>
+                {props.isGlobeOn && <iframe
+                    style={{
+                        border: 0,
+                        width: "100%",
+                        height: "100%"
+                    }}
+                    src={mode === 'dark' ? process.env.REACT_APP_DARK_GLOBE : process.env.REACT_APP_LIGHT_GLOBE}
+
+                >
+
+                </iframe>}
+            </div>
         </Flex >
 
     )

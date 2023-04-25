@@ -1,23 +1,28 @@
 import RemoveIcon from '@mui/icons-material/Remove'
 import SettingsIcon from '@mui/icons-material/Settings'
 import { Fade, Paper } from '@mui/material'
-import { Button, IconButton, Sheet, Typography, useColorScheme } from '@mui/joy'
+import { Button, IconButton, Sheet, Tooltip, Typography, useColorScheme } from '@mui/joy'
 import { FC, useState } from 'react'
 import { Flex } from '../common/Helpers'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeOutlined from '@mui/icons-material/DarkModeOutlined'
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import CloseIcon from '@mui/icons-material/Close';
+import ParticlesIcon from '@mui/icons-material/AutoAwesome';
+import GlobeIcon from '@mui/icons-material/Public';
 
 interface IProps {
+    open: boolean
     isParticlesOn: boolean
+    isGlobeOn: boolean
+    isGlobeDisabled: boolean
+
+    setOpen(v: boolean): void
     setIsParticlesOn(v: boolean): void
+    setIsGlobeOn(v: boolean): void
 }
 
-const Settings: FC<IProps> = props => {
+const Settings: FC<IProps> = ({ open, setOpen, ...props }) => {
 
     const { mode, setMode } = useColorScheme()
-    const [open, setOpen] = useState(false)
 
     return (<>
         {!open && <IconButton variant='outlined' color='neutral' sx={{ zIndex: 99, m: 2, position: 'absolute', top: 0, right: 0 }} onClick={() => { setOpen(true) }}>
@@ -60,7 +65,7 @@ const Settings: FC<IProps> = props => {
                 </Flex>
 
                 <Typography level='h5'>Particles</Typography>
-                <Flex box sx={{}} centerY>
+                <Flex box sx={{ mb: 2 }} centerY>
                     <Button
                         onClick={() => props.setIsParticlesOn(false)}
                         sx={{ borderTopRightRadius: 0, borderBottomRightRadius: 0, flexBasis: '45%', }}
@@ -68,16 +73,45 @@ const Settings: FC<IProps> = props => {
                         color={!props.isParticlesOn ? 'primary' : 'neutral'}
                     // startDecorator={<CloseIcon />}
                     >Off</Button>
+                    <Tooltip title={mode === 'light' ? 'Available only in dark mode' : ''}>
+                        <span style={{ flexBasis: '45%' }}>
+                            <Button
+                                disabled={mode === 'light'}
+                                onClick={() => props.setIsParticlesOn(true)}
+                                sx={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0, width: 1 }}
+                                variant={props.isParticlesOn ? 'solid' : 'outlined'}
+                                color={props.isParticlesOn ? 'primary' : 'neutral'}
+                                startDecorator={<ParticlesIcon />}
+                            >On</Button>
+                        </span>
+                    </Tooltip>
+                </Flex>
+
+                <Typography level='h5'>Globe</Typography>
+                <Flex box sx={{}} centerY>
                     <Button
-                        onClick={() => props.setIsParticlesOn(true)}
-                        sx={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0, flexBasis: '45%' }}
-                        variant={props.isParticlesOn ? 'solid' : 'outlined'}
-                        color={props.isParticlesOn ? 'primary' : 'neutral'}
-                        startDecorator={<AutoAwesomeIcon />}
-                    >On</Button>
+                        // disabled={props.isGlobeDisabled}
+                        onClick={() => props.setIsGlobeOn(false)}
+                        sx={{ borderTopRightRadius: 0, borderBottomRightRadius: 0, flexBasis: '45%', }}
+                        variant={!props.isGlobeOn ? 'solid' : 'outlined'}
+                        color={!props.isGlobeOn ? 'primary' : 'neutral'}
+                    // startDecorator={<CloseIcon />}
+                    >Off</Button>
+                    <Tooltip title={props.isGlobeDisabled ? 'Not enough space (height)' : ''}>
+                        <span style={{ flexBasis: '45%' }}>
+                            <Button
+                                disabled={props.isGlobeDisabled}
+                                onClick={() => props.setIsGlobeOn(true)}
+                                sx={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0, width: 1 }}
+                                variant={props.isGlobeOn ? 'solid' : 'outlined'}
+                                color={props.isGlobeOn ? 'primary' : 'neutral'}
+                                startDecorator={<GlobeIcon />}
+                            >On</Button>
+                        </span>
+                    </Tooltip>
                 </Flex>
             </Paper>
-        </Fade>
+        </Fade >
 
 
     </>

@@ -41,7 +41,7 @@ const Projects: FC<IProps> = props => {
             preview: CCImages.preview,
             images: CCImages.images,
             tools: ['Javascript', 'Typescript', 'React', 'Redux', 'ThreeJS', 'MUI', 'php', 'MySQL'],
-            url: 'https://www.garagecabinets.com/g/cc1/', extraUrls: [],
+            url: 'http://51.254.113.253/g/ccDemo/', extraUrls: [],
             description: <Typography>
                 &emsp;Cabinet Configurator is the main project I'm working on in  <Link onClick={() => {
                     props.setTabId(1)

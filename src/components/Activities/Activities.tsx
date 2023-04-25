@@ -99,7 +99,7 @@ const Activities: FC<IProps> = props => {
                     }}
                 >
                     <ListItem nested>
-                        <ListSubheader>Study</ListSubheader>
+                        <ListSubheader>Education</ListSubheader>
                         <List>
                             {activities.filter(a => a.isStudy).map(activity => <ListItem key={activity.id}>
                                 <ListItemButton onClick={() => { setSelectedActivity(activity) }}>

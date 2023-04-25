@@ -1,4 +1,4 @@
-import { Tabs, useColorScheme } from "@mui/joy";
+import { Box, Tabs, useColorScheme } from "@mui/joy";
 import Tab, { tabClasses } from "@mui/joy/Tab";
 import TabList from "@mui/joy/TabList";
 import TabPanel from "@mui/joy/TabPanel";
@@ -19,10 +19,14 @@ const App: FC<IProps> = (props) => {
   const { mode, setMode } = useColorScheme()
   const [isParticlesOn, setIsParticlesOn] = useState(true)
 
-  const [tabId, setTabId] = useState(0)
+  const [tabId, setTabId] = useState(2)
   const [selectedActivityId, setSelectedActivityId] = useState(0)
   const [selectedProjectId, setSelectedProjectId] = useState<undefined | number>(undefined)
   const [isPreviewsLoaded, setIsPreviewsLoaded] = useState(false)
+  const [isGlobeOn, setIsGlobeOn] = useState(true)
+  const [isGlobeDisabled, setIsGlobeDisabled] = useState(false)
+
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
 
   const toggleMode = (e: KeyboardEvent) => {
     if (e.key === 'm') {
@@ -38,12 +42,28 @@ const App: FC<IProps> = (props) => {
 
   useEffect(() => {
     document.body.style.background = mode === 'dark' ? "#25252d" : "#ebebef"
+
+    if (mode === 'light') {
+      setIsParticlesOn(false)
+    }
   }, [mode])
   // window.removeEventListener('keypress', toggleMode)
-
+  useEffect(() => {
+    if (isGlobeDisabled && isGlobeOn)
+      setIsGlobeOn(false)
+  }, [isGlobeDisabled])
 
   return <Flex centerX variant="soft" sx={{ height: "100%", background: "#00000000" }}   >
-    <Settings isParticlesOn={isParticlesOn} setIsParticlesOn={setIsParticlesOn} />
+    <Settings
+      open={isSettingsOpen}
+      isParticlesOn={isParticlesOn}
+      isGlobeOn={isGlobeOn}
+      isGlobeDisabled={isGlobeDisabled}
+
+      setOpen={setIsSettingsOpen}
+      setIsParticlesOn={setIsParticlesOn}
+      setIsGlobeOn={setIsGlobeOn}
+    />
     {isParticlesOn && <Three />}
     <Tabs value={tabId} variant="soft"
       sx={theme => ({
@@ -98,8 +118,37 @@ const App: FC<IProps> = (props) => {
           setSelectedProjectId={setSelectedProjectId}
         />
       </TabPanel>
-      <TabPanel value={2}><About /></TabPanel>
+      <TabPanel value={2}>
+        <About
+          isGlobeOn={isGlobeOn}
+          isGlobeDisabled={isGlobeDisabled}
+          setIsGlobeDisabled={setIsGlobeDisabled}
+          setIsSettingsOpen={setIsSettingsOpen}
+        /></TabPanel>
     </Tabs>
+
+    {/* <Box sx={{
+      position: 'absolute',
+      bottom: 10,
+      right: 10,
+      // width: 300,
+      // height: 300
+    }}>
+      <iframe
+        width={500}
+        // height={500}
+        height={500 * 9 / 16}
+        style={{
+          border: 0,
+          // width: "100%",
+          // height: "100%"
+        }}
+        src='http://127.0.0.1:5500/index.html'
+
+      >
+
+      </iframe>
+    </Box> */}
   </Flex>
 
 }
