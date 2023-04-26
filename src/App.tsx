@@ -17,7 +17,7 @@ interface IProps {
 const App: FC<IProps> = (props) => {
 
   const { mode, setMode } = useColorScheme()
-  const [isParticlesOn, setIsParticlesOn] = useState(true)
+  const [isParticlesOn, setIsParticlesOn] = useState(mode === 'dark')
 
   const [tabId, setTabId] = useState(2)
   const [selectedActivityId, setSelectedActivityId] = useState(0)
