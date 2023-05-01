@@ -119,11 +119,11 @@ const About: FC<IProps> = props => {
                 },
             })}>
                 <Typography level='h5'>
-                    &emsp;Hey, my name is Gagik Khachatryan, I'm {Math.floor((new Date().getTime() - new Date("2000-04-24").getTime()) / 1000 / 3600 / 24 / 365)} years old. I'm full-stack web developer and BS of Cyber Security from Armenia. I start coding since 2014 and work as freelancer since 2017.
+                    &emsp;Hey, my name is Gagik Khachatryan, I'm {Math.floor((new Date().getTime() - new Date("2000-04-24").getTime()) / 1000 / 3600 / 24 / 365)} years old. I'm full-stack web developer and BS of Cyber Security from Armenia. I started coding in 2014 and have been working as a freelancer since 2017.
                 </Typography>
                 <Divider sx={{ my: 2 }} />
                 <Typography level='h5'>
-                    &emsp;You can see languages and tools down below that I managed to use in my career
+                    &emsp;Below you can see languages and tools down that I managed to use in my career
                 </Typography>
                 <Flex box sx={{ justifyContent: 'space-evenly', mt: 2, flexWrap: 'wrap' }}>
                     <OutlinedDiv label='Main' labelPlacement='center' borderColor={mode === 'light' ? '#dcdce1' : undefined}
