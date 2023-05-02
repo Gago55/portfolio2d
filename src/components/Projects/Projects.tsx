@@ -185,7 +185,10 @@ const Projects: FC<IProps> = props => {
                 { title: 'Archive File', url: 'https://drive.google.com/file/d/19RAP81Us0LrssU-1v78D3GqMiVOUB2LV/view?usp=sharing' },
             ],
             description: <Typography>
-                &emsp;Roby is a 3D game built with Unity3D that I created for the final exam of the Game Development III workshop at Tumo.<br />
+                &emsp;Roby is a 3D game built with Unity3D that I created for the final exam of the Game Development III workshop at <Link onClick={() => {
+                    props.setTabId(1)
+                    props.setSelectedActivityId(0)
+                }}>TUMO</Link>.<br />
                 &emsp;Roby can move, dash, jump, and shoot. The goal of the game is to collect all coins and kill all enemies. <br />
                 &emsp;If your device running on Windows you can download and play it.
             </Typography>
