@@ -1,13 +1,13 @@
+import ParticlesIcon from '@mui/icons-material/AutoAwesome'
+import DarkModeOutlined from '@mui/icons-material/DarkModeOutlined'
+import LightModeIcon from '@mui/icons-material/LightMode'
+import GlobeIcon from '@mui/icons-material/Public'
 import RemoveIcon from '@mui/icons-material/Remove'
 import SettingsIcon from '@mui/icons-material/Settings'
+import { Button, IconButton, Tooltip, Typography, useColorScheme } from '@mui/joy'
 import { Fade, Paper } from '@mui/material'
-import { Button, IconButton, Sheet, Tooltip, Typography, useColorScheme } from '@mui/joy'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Flex } from '../common/Helpers'
-import LightModeIcon from '@mui/icons-material/LightMode'
-import DarkModeOutlined from '@mui/icons-material/DarkModeOutlined'
-import ParticlesIcon from '@mui/icons-material/AutoAwesome';
-import GlobeIcon from '@mui/icons-material/Public';
 
 interface IProps {
     open: boolean

@@ -303,7 +303,7 @@ const Three: FC<IProps> = props => {
                 // gradient.addColorStop(1, 'rgba(255,255,255,1)')
             }
 
-            console.log("sprite");
+            // console.log("sprite");
 
 
             context.fillStyle = gradient

@@ -14,7 +14,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Three from "./components/Three/Three";
+import { initTitle, loadAllImages } from './common/common';
 
 const { unstable_sxConfig: muiSxConfig, ...muiTheme } = extendMuiTheme({
   // This is required to point to `var(--joy-*)` because we are using
@@ -117,6 +117,9 @@ root.render(
   </React.StrictMode>
 );
 
+
+initTitle()
+loadAllImages()
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

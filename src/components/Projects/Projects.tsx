@@ -1,12 +1,11 @@
 import PetsIcon from '@mui/icons-material/Pets';
 import { AspectRatio, Box, Card, CardOverflow, Divider, Link, Sheet, Typography, useColorScheme } from "@mui/joy";
+import { Skeleton } from '@mui/material';
 import { FC, ReactNode, useEffect, useRef, useState } from 'react';
-import { CarImages, CCImages, FloorImages, GlobeImages, RobyImages, SecretImages, ShadowImages, SocketGameImages, TelegramImages, TetrisImages, ViewersImages } from '../../assets/projects/projectImages';
+import { CCImages, CarImages, FloorImages, GlobeImages, RobyImages, SecretImages, ShadowImages, SocketGameImages, TelegramImages, TetrisImages, ViewersImages } from '../../assets/projects/projectImages';
 import { ToolNameType } from '../About/About';
 import { Flex, Shift } from '../common/Helpers';
 import ProjectDetailedView from './ProjectDetailedView';
-import ProjectCard from './ProjectCard';
-import { Skeleton } from '@mui/material';
 
 export type ProjectType = {
     title: string

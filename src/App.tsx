@@ -1,14 +1,14 @@
-import { Box, Tabs, useColorScheme } from "@mui/joy";
+import { Tabs, useColorScheme } from "@mui/joy";
 import Tab, { tabClasses } from "@mui/joy/Tab";
 import TabList from "@mui/joy/TabList";
 import TabPanel from "@mui/joy/TabPanel";
 import { FC, useEffect, useState } from "react";
 import About from "./components/About/About";
 import Activities from "./components/Activities/Activities";
-import { Flex } from "./components/common/Helpers";
 import Projects from "./components/Projects/Projects";
 import Settings from "./components/Settings/Settings";
 import Three from "./components/Three/Three";
+import { Flex } from "./components/common/Helpers";
 
 
 interface IProps {
@@ -22,7 +22,7 @@ const App: FC<IProps> = (props) => {
   const [tabId, setTabId] = useState(2)
   const [selectedActivityId, setSelectedActivityId] = useState(0)
   const [selectedProjectId, setSelectedProjectId] = useState<undefined | number>(undefined)
-  const [isPreviewsLoaded, setIsPreviewsLoaded] = useState(false)
+  const [isPreviewsLoaded, setIsPreviewsLoaded] = useState(true)
   const [isGlobeOn, setIsGlobeOn] = useState(true)
   const [isGlobeDisabled, setIsGlobeDisabled] = useState(false)
 
@@ -38,6 +38,7 @@ const App: FC<IProps> = (props) => {
   useEffect(() => {
     window.removeEventListener('keypress', toggleMode)
     window.addEventListener('keypress', toggleMode)
+
   }, [])
 
   useEffect(() => {

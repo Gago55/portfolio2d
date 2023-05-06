@@ -76,7 +76,7 @@ const About: FC<IProps> = props => {
     const checkGlobeContainer = (isFirstTime = false) => {
         if (globeContainer.current) {
             const elHeight = parseInt(getComputedStyle(globeContainer.current).height.slice(0, -2))
-            console.log(elHeight);
+            // console.log(elHeight);
 
             if (elHeight > globeMinHeight) {
                 if (isGlobeDisabled.current) {
@@ -159,7 +159,8 @@ const About: FC<IProps> = props => {
                 </Tooltip>
             </Flex>
             <div ref={globeContainer} style={{ flexGrow: 1, width: '100%', minHeight: globeMinHeight }}>
-                {props.isGlobeOn && <iframe
+                {(props.isGlobeOn && process.env.REACT_APP_MODE !== 'development') && <iframe
+                    title='Globe'
                     style={{
                         border: 0,
                         width: "100%",
