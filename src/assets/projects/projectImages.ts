@@ -22,6 +22,9 @@ import ShadowPic3 from "./shadow/Pic3.png"
 import ShadowPic4 from "./shadow/Pic4.png"
 import ShadowPic5 from "./shadow/Pic5.png"
 import ShadowPic6 from "./shadow/Pic6.png"
+import ShadowPic7 from "./shadow/Pic7.jpg"
+import ShadowPic8 from "./shadow/Pic8.jpg"
+import ShadowPic9 from "./shadow/Pic9.jpg"
 
 import SecretPreview from "./secret/preview.webp"
 import SecretPic1 from "./secret/pic1.png"
@@ -114,7 +117,7 @@ export const CCImages = {
 
 export const ShadowImages = {
     preview: ShadowPreview,
-    images: [ShadowPic6, ShadowPic1, ShadowPic2, ShadowPic3, ShadowPic4, ShadowPic5]
+    images: [ShadowPic6, ShadowPic1, ShadowPic2, ShadowPic3, ShadowPic4, ShadowPic5, ShadowPic7, ShadowPic8, ShadowPic9]
 }
 
 export const SecretImages = {
